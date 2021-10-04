@@ -25,7 +25,7 @@ class posts(db.Models):
     id_place = db.Column(db.Integer, db.ForeignKey('places.id'))
     id_review = db.Column(db.Integer, db.ForeignKey('reviews.id'))
 
-class review(db.Models):
+class reviews(db.Models):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     rating = db.Column(db.Integer)
