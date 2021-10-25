@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <style>
+        .about_image {
+            background: url("{{ url_for('static',filename='images/anh2.jpeg') }}") no-repeat 0px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header + menu -->
+    <div class="header_area">
+        <div class="header_navbar">
+            <div class="container h-100">
+                <div class="header_navbar-wrap row d-flex">
+                    <div class="col-3 header_logo">VPhuc Travel</div>
+                    <div class="col-9 header_menu">
+                        <ul class="d-flex justify-content-between header_menu-ul">
+                            <li><a class="header_menu-link" href="#">Landing Page</a></li>
+                            <li><a class="header_menu-link" href="#">Địa danh</a></li>
+                            <li><a class="header_menu-link" href="#">Dịch Vụ</a></li>
+                            <li><a class="header_menu-link" href="#">Bài Viết</a></li>
+                            <li><a class="header_menu-link" href="#">Gis</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header_main">
+            <div class="header-main-container bg_cover">
+                <div class="container header_main-wrap">
+                    <div class="row">
+                        <div class="header_main-content">
+                            <h2 class="header_main-content-title">Explore The World with <span>VPhuc Travel</span></h2>
+                            <p class="header_main-content-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Praesent laoreet
+                                elit ut diam
+                                mattis, in dapibus dolor fringilla. Curabitur at nulla diam. </p>
+                            <button type="button" class="btn btn-warning header_main-btn">Book Now</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- about -->
+    <div class="about_area">
+        <div class="about_wrapper">
+            <div class="about_image bg_cover"></div>
+            <div class="container about_main-wrap">
+                <div class="row flex-col justify-content-end">
+                    <div class="col-lg-7">
+                        <h3 class="about_main-content-title">About Us </h3>
+                        <span class="about_main-content-title-bottom">TraveLand in <span>Numbers</span></span>
+                        <div class="about_main-content-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet elit ut diam
+                            mattis, in dapibus dolor fringilla. Curabitur at nulla diam. Mauris pharetra tincidunt
+                            purus, at iaculis nulla cursus at. Duis rutrum blandit ipsum sed luctus. Cras pretium mattis
+                            felis sed faucibus. Curabitur finibus tortor ac diam varius ornare.
+                            In lobortis vestibulum metus a pellentesque. Sed non nunc id dolor posuere consectetur sed
+                            vel augue...
+                        </div>
+                        <button type="button" class="btn btn-warning about_main-btn">Read More</button>
+                    </div>
+                </div>
+                <div class="about_counter d-flex flex-wrap justify-content-end">
+                    <div class="col-lg-7">
+                        <div class="row">
+                            <div class="about_item-counter col-5" style="margin-right: 30px; ">
+                                <span>954</span>
+                                <p>Trips Done</p>
+                            </div>
+                            <div class="about_item-counter ml-12 mb-12 col-5">
+                                <span>124</span>
+                                <p>Corporate Client</p>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 30px;">
+                            <div class="about_item-counter col-5" style="margin-right: 30px; ">
+                                <span>55</span>
+                                <p>Visited Countries</p>
+                            </div>
+                            <div class="about_item-counter col-5">
+                                <span>55</span>
+                                <p>Team Members</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- services -->
+
+    <div class="services container">
+        <div class="services_header d-flex flex-column justify-content-center">
+            <h3 class="services_header-title">Service We Provide</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet elit ut diam mattis, in
+                dapibus
+                dolor fringilla. Curabitur at nulla diam. Mauris pharetra tincidunt purus
+            </p>
+        </div>
+        <div class="services_body">
+            <div class="row">
+                <!--  -->
+                <div class="col-3">
+                    <div class="services_body-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" fill="none"
+                            stroke="#eec41e" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9" />
+                            <path d="M9 22V12h6v10M2 10.6L12 2l10 8.6" />
+                        </svg>
+
+                        <h4 class="services_body-item-title">Hotel Booking</h4>
+                        <p class="services_body-item-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                            dianum eirmod.
+                        </p>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="col-3">
+                    <div class="services_body-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" fill="none"
+                            stroke="#eec41e" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <g transform="translate(2 3)">
+                                <path
+                                    d="M20 16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2v11z" />
+                                <circle cx="10" cy="10" r="4" />
+                            </g>
+                        </svg>
+
+                        <h4 class="services_body-item-title">Selfie Place</h4>
+                        <p class="services_body-item-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                            dianum eirmod.
+                        </p>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="col-3">
+                    <div class="services_body-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" fill="none"
+                            stroke="#eec41e" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="10" cy="20.5" r="1" />
+                            <circle cx="18" cy="20.5" r="1" />
+                            <path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1" />
+                        </svg>
+
+                        <h4 class="services_body-item-title">Shopping</h4>
+                        <p class="services_body-item-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                            dianum eirmod.
+                        </p>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="col-3">
+                    <div class="services_body-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" fill="none"
+                            stroke="#eec41e" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                            </polygon>
+                        </svg>
+
+                        <h4 class="services_body-item-title">Other Services</h4>
+                        <p class="services_body-item-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                            dianum eirmod.
+                        </p>
+                    </div>
+                </div>
+                <!--  -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="gallery container">
+        <div class="services_header d-flex flex-column justify-content-center">
+            <h3 class="services_header-title">Trip Gallery</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet elit ut diam mattis, in
+                dapibus
+                dolor fringilla. Curabitur at nulla diam. Mauris pharetra tincidunt purus
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="gallery_single">
+                    <img src="{{ url_for('static', filename='images/about.jpeg') }}" alt="gallery_single_left">
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="gallery_single">
+                            <img src="{{ url_for('static', filename='images/cong_troi_tam_dao_2.jpeg') }}"
+                                alt="gallery_single_left">
+                        </div>
+                        <div class="gallery_single">
+                            <img src="{{ url_for('static', filename='images/king_nghiem_dl_tamdao.jpeg') }}"
+                                alt="gallery_single_left">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="gallery_single">
+                            <img src="{{ url_for('static', filename='images/tam-dao.jpeg') }}"
+                                alt="gallery_single_left">
+                        </div>
+                        <div class="gallery_single">
+                            <img src="{{ url_for('static', filename='images/du-lich-td.jpeg') }}"
+                                alt="gallery_single_left">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer_area">
+        <div class="footer_wrap">
+            <div class="container">
+                <div class="row">
+                    <!--  -->
+                    <div class="col-lg-4">
+                        <div class="footer_about">
+                            <a class="footer_about-logo" href="#">VPhuc Travel</a>
+                            <p class="footer_about-text">Lorem ipsum dolor sifsddt amet, conse tetur sadipscing elitr,
+                                sed diam onumy eirmod
+                                tempor invidunt ut labore et dolore magna aliquya.
+                            </p>
+                            <ul class="social">
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                                        fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
+                                        </path>
+                                    </svg>
+                                </li>
+                                <li style="margin-left: 24px;"><svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                        height="30" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                                        </path>
+                                    </svg>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="col-lg-4">
+                        <div class="footer_about">
+                            2
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="col-lg-4">
+                        <div class="footer_about">
+                            3
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>Made by 5 Group</p>
+        </div>
+    </div>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
