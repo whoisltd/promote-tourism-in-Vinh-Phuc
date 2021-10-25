@@ -19,7 +19,7 @@ body {
   font-family: "Poppins", sans-serif;
   font-weight: normal;
   font-style: normal;
-  color: var(--primary-color);
+  color: rgb(116, 126, 136);
   overflow: auto;
   overflow-x: hidden;
 }
@@ -196,8 +196,6 @@ body {
 }
 .about_item-counter {
     text-align: center;
-    border: 1px solid;
-    border-radius: 12px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .about_item-counter > span{
@@ -212,4 +210,100 @@ body {
     font-weight: var(--primary-fontWeight);
     line-height: 24px;
     letter-spacing: var(--primary-spacing);
+}
+
+/* services */
+.services{
+    margin-top: 130px;
+    margin-bottom: 130px;
+}
+.services_header{
+    text-align: center;   
+}
+.services_header-title{
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 58px;
+    letter-spacing: var(--primary-spacing);
+    color: #38424D;;
+}
+.services_header > p{
+    margin-top: 24px;
+    padding: 0 15vw;
+    font-size: var(--primary-fontSize);
+    letter-spacing: var(--primary-spacing);
+}
+
+.services_body{
+    margin-top: 30px;
+    padding-bottom: 130px;
+}
+.services_body-item{
+    text-align: center;
+}
+
+.services_body-item-title{
+    margin-top: 24px;
+    color: #38424D;
+    font-size: 22px;
+    font-weight: var(--secondary-fontWeight);
+    letter-spacing: var(--primary-spacing);
+}
+
+.services_body-item-text{
+    margin-top: 15px;
+    font-size: var(--primary-fontSize);
+    line-height: 24px;
+    letter-spacing: var(--primary-spacing);
+}
+/* gallery */
+.gallery{
+    margin-top: 130px;
+    margin-bottom: 130px;
+}
+.gallery_single{
+    position: relative;
+    margin-top: 30px;
+
+}
+.gallery_single img{
+    width: 100%;
+    border-top-left-radius: 55px;
+    border-bottom-right-radius: 55px;
+}
+.gallery_single > img{
+    vertical-align: middle;
+    border-style: none;
+}
+
+/* footer */
+.footer_area{
+    background: #38424D;
+    color: #ffffff;
+    margin-top: 260px;
+}
+.footer_wrap{
+    padding-top: 80px;
+    padding-bottom: 130px;
+}
+.footer_about{
+    margin-top: 50px;
+}
+.footer_about-logo{
+    font-size: 24px;
+  font-weight: var(--secondary-fontWeight);
+  line-height: 28px;
+  letter-spacing: var(--primary-spacing);
+  color: var(--secondary-color);
+}
+.footer_about-text{
+    margin-top: 25px;
+    font-size: var(--primary-fontSize);
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: var(--primary-spacing);
+}
+.social{
+    list-style: none;
+    display: flex;
 }
