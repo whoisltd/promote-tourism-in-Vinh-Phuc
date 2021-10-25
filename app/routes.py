@@ -1,3 +1,5 @@
+from flask import render_template
+from app import app
 from app import app
 from app.models import *
 from flask import json, render_template, request, redirect
@@ -14,6 +16,10 @@ engine = create_engine('')
 da = scoped_session(sessionmaker(bind=engine))
 
 
-@app.route('/')
-def index():
+@app.route('/services')
+def services():
     return render_template('services.html')
+  
+@app.route("/")
+def index():
+    return render_template("index.html")
