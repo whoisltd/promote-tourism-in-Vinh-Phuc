@@ -1,10 +1,10 @@
 from app import db
 from datetime import datetime
 from geoalchemy2 import Geometry
-from app import login
+# from app import login
 from werkzeug.security import generate_password_hash, check_password_hash
 
-class places(db.Models):
+class places(db.Model):
     __tablename__ = 'places'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
@@ -16,7 +16,7 @@ class places(db.Models):
     # Many to Many
     # place = db.relationship('Place', backref='users', lazy=True)
 
-class posts(db.Models):
+class posts(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
@@ -25,7 +25,7 @@ class posts(db.Models):
     id_place = db.Column(db.Integer, db.ForeignKey('places.id'))
     id_review = db.Column(db.Integer, db.ForeignKey('reviews.id'))
 
-class reviews(db.Models):
+class reviews(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     rating = db.Column(db.Integer)
@@ -34,7 +34,7 @@ class reviews(db.Models):
     id_service = db.Column(db.Integer, db.ForeignKey('services.id'))
     id_user = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-class services(db.Models):
+class services(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     image = db.Column(db.String, nullable=False)
@@ -47,7 +47,7 @@ class services(db.Models):
     # Many to Many
     # place = db.relationship('places', backref='services', lazy=True)
 
-class users(db.Models):
+class users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, nullable=False, unique=True)
     name = db.Column(db.String, nullable=False)
@@ -66,6 +66,7 @@ class users(db.Models):
 
 class user(users):
     __tablename__ = 'users'
+    __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
     __mapper_args__ = {
         'polymorphic_identity': 'user'
@@ -78,9 +79,9 @@ class admin(users):
         'polymorphic_identity': 'admin'
     }
 
-@login.user_loader
-def load_user(id):
-    return users.query.get(int(id))
+# @login.user_loader
+# def load_user(id):
+#     return users.query.get(int(id))
 
 
     # One to Many
