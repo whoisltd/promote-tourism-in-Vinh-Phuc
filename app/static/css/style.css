@@ -1,0 +1,316 @@
+body {
+  font-family: "Gamja Flower", cursive;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.wrapper {
+  background-color: #dddddd;
+  height: auto;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.place {
+  color: white;
+}
+.place__heading {
+  font-size: 60px;
+  line-height: 42px;
+  font-weight: 500;
+  font-family: serif;
+  text-align: center;
+  text-align: center;
+  padding-top: 30px;
+  color: #b2910e;
+}
+.place__video {
+  width: 100%;
+  height: 540px;
+  margin-top: 50px;
+}
+.place__desc {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #2c2f33;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.place__desc--title {
+  margin-top: 32px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.place__title {
+  font-size: 36px;
+  line-height: 43px;
+  font-weight: 600;
+  color: #dc3545;
+}
+.place__title--heading {
+  text-transform: uppercase;
+  margin-top: 106px;
+  margin-bottom: 80px;
+  color: #b2910e;
+}
+.place__title--item {
+  margin-bottom: 11px;
+  color: #212529;
+}
+.place__list {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 80px;
+}
+.place__list .place__item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 21px;
+}
+.place__list .place__item .place__info {
+  width: 48%;
+  text-align: justify;
+}
+.place__list .place__item .slide {
+  width: 48%;
+  margin-top: 55px;
+}
+.place__list .place__item .slide .slide__item {
+  width: 100%;
+  height: 420px;
+}
+.place__list .place__item .slide .slide__item .slide__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 30px;
+  background-color: #dc3545;
+  border-radius: 4px;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 40px;
+}
+.btn:hover {
+  background-color: transparent;
+  border: 1px solid #dc3545;
+  color: #dc3545;
+  transition: 0.25s;
+}
+
+.flex-reverse {
+  flex-direction: row-reverse;
+}
+
+.header {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.header__top {
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.295);
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.header__top .logo {
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+}
+.header__top .navbar {
+  display: flex;
+  justify-content: space-between;
+}
+.header__top .navbar__item {
+  margin-right: 100px;
+}
+.header__top .navbar__item a {
+  color: white;
+  text-transform: uppercase;
+}
+.header__top .logo {
+  margin: 0px 150px;
+}
+
+.header__background {
+  background-attachment: fixed;
+  background-image: url("./images/tamdaoo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.header__background .banner {
+  margin-left: 150px;
+  margin-top: 115px;
+  max-width: 35%;
+}
+.header__background .banner__title {
+  font-size: 55px;
+  line-height: 67px;
+  font-weight: 700;
+  color: white;
+}
+.header__background .banner__title span {
+  color: #dc3545;
+}
+.header__background .banner__desc {
+  color: white;
+  margin-top: 35px;
+  font-size: 25px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn--banner {
+  padding: 15px 30px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background-color: #dc3545;
+  color: white;
+}
+
+.tip__title {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 48px;
+  text-align: center;
+  color: #b2910e;
+  text-transform: uppercase;
+}
+
+.tip__desc {
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 500;
+  color: var(--color-text);
+  text-align: center;
+  padding-top: 8px;
+}
+
+.tip__list {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding-top: 50px;
+}
+
+.tip__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tip__item img {
+  width: 100px;
+  height: 65px;
+  object-fit: contain;
+  position: relative;
+}
+
+.tip__text {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 30px;
+}
+
+.footer {
+  padding-bottom: 20px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  background-color: black;
+  color: white;
+}
+
+.padding__footer {
+  padding-top: 50px;
+}
+
+.footer__title {
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.footer__text {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #b9b9b9;
+  max-width: 430px;
+  padding-bottom: 6px;
+  text-align: center;
+}
+
+.signup__btn {
+  width: 100%;
+  height: 40px;
+}
+
+.signup__btn--button {
+  background-color: #dc3545;
+  border-radius: 4px;
+  margin-top: 10px;
+  cursor: pointer;
+  border: 1px solid #dc3545;
+  line-height: 24px;
+  color: white;
+  text-transform: uppercase;
+  font-family: "Gamja Flower", cursive;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.signup__btn--button:hover {
+  background-color: #e02134;
+}
+
+.social__link {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  text-decoration: none;
+  padding: 0 5px;
+}
+
+.social__list {
+  padding-left: 163px;
+}
+
+/*# sourceMappingURL=style.css.map */
