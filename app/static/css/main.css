@@ -1,0 +1,309 @@
+:root {
+  --primary-color: #FFFFFF;
+  --secondary-color: #eec41e;
+  --primary-fontSize: 16px;
+  --primary-fontWeight: 400;
+  --secondary-fontWeight: 700;
+  --primary-spacing: 150%;
+  --backGround-url: {{ url_for('images', filename='/hero-area.jpeg') }}
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  color: rgb(116, 126, 136);
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+/* header */
+.header_navbar {
+  height: 86px;
+  width: 100%;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.21);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  transition: all 0.3s ease-out 0s;
+}
+.header_navbar-wrap {
+  height: 100%;
+}
+.header_logo {
+  margin: auto 0;
+  padding: 0;
+  font-size: 24px;
+  font-weight: var(--secondary-fontWeight);
+  line-height: 28px;
+  letter-spacing: var(--primary-spacing);
+  color: var(--secondary-color);
+}
+.header_menu {
+  margin: auto 0;
+  padding: 0;
+}
+.header_menu-ul {
+  list-style: none;
+  margin: 0;
+}
+
+.header_menu-link {
+  text-decoration: none !important;
+  color: var(--primary-color);
+  font-style: var(--primary-fontSize);
+  font-weight: var(--primary-fontWeight);
+  letter-spacing: var(--primary-spacing);
+}
+.header_menu-link:hover {
+  color: var(--secondary-color);
+}
+
+/*  */
+.header-main-container {
+    
+    /* background: url("https://pix10.agoda.net/city/710945/710945-7x3.jpg?s=1920x") no-repeat 0px 0px !important; */
+  background: url("https://preview.uideck.com/items/traveland/assets/images/hero-area.jpg") no-repeat 0px 0px !important;
+  height: 800px;
+  border-bottom-left-radius: 165px;
+  overflow: hidden;
+  position: relative;
+}
+.header-main-container::before{
+    position: absolute;
+    content: '';
+    background-color: rgba(56, 66, 77, 0.24);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+.bg_cover{
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    align-items: center!important;
+}
+/*  */
+.header_main-wrap{
+    position: absolute;
+    top: 35%;
+    left: 20%;
+    height: fit-content;
+}
+
+.header_main-content{
+    width: 50%;
+    padding-right: 60px;
+}
+
+.header_main-content-title{
+    font-size: 54px;
+    font-weight: var(--secondary-fontWeight);
+}
+.header_main-content-title > span{
+    color: var(--secondary-color);
+}
+.header_main-content-text{
+    margin-top: 30px;
+    color: var(--primary-color);
+    font-size: var(--primary-fontSize);
+    line-height: 24px;
+    letter-spacing: var(--primary-spacing);
+}
+.header_main-btn{
+    width: 150px;
+    height: 50px;
+    background-color: var(--secondary-color);
+    margin-top: 45px;
+    color: var(--primary-color);
+    font-size: var(--primary-fontSize);
+    line-height: 24px;
+    letter-spacing: var(--primary-spacing);
+}
+
+/* about  */
+.about_area{
+    padding-top: 130px;
+    padding-bottom: 130px;
+}
+.about_wrapper{
+    position: relative;
+    height: 600px;
+}
+
+.about_image{
+    height: 100%;
+    width: 37%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top-right-radius: 220px;
+}
+
+.about_main-content-title{
+    font-size: 44px;
+    font-weight: 600;
+    color: #38424D;
+    margin: 0;
+}
+.about_main-content-title-bottom{
+    font-size: 44px;
+    font-weight: 600;
+    color: #38424D;
+}
+.about_main-content-title-bottom > span{
+    font-size: 44px;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.about_main-content-text{
+    margin-top: 30px;
+    color: #747E88;
+    font-size: var(--primary-fontSize);
+    font-weight: var(--primary-fontWeight);
+    line-height: 24px;
+    letter-spacing: var(--primary-spacing);
+}
+
+.about_main-btn{
+    width: 150px;
+    height: 50px;
+    background-color: var(--secondary-color);
+    margin-top: 45px;
+    color: var(--primary-color);
+    font-size: var(--primary-fontSize);
+    line-height: 24px;
+    letter-spacing: var(--primary-spacing);
+}
+.about_counter{
+    margin-top: 30px;
+}
+
+.about_counter{
+    color: black;
+}
+.about_item-counter {
+    text-align: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.about_item-counter > span{
+    font-size: 32px;
+    font-weight: var(--secondary-fontWeight);
+    line-height: 48px;
+    letter-spacing: var(--primary-spacing);
+}
+.about_item-counter > p{
+    color: #747E88;
+    font-size: var(--primary-fontSize);
+    font-weight: var(--primary-fontWeight);
+    line-height: 24px;
+    letter-spacing: var(--primary-spacing);
+}
+
+/* services */
+.services{
+    margin-top: 130px;
+    margin-bottom: 130px;
+}
+.services_header{
+    text-align: center;   
+}
+.services_header-title{
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 58px;
+    letter-spacing: var(--primary-spacing);
+    color: #38424D;;
+}
+.services_header > p{
+    margin-top: 24px;
+    padding: 0 15vw;
+    font-size: var(--primary-fontSize);
+    letter-spacing: var(--primary-spacing);
+}
+
+.services_body{
+    margin-top: 30px;
+    padding-bottom: 130px;
+}
+.services_body-item{
+    text-align: center;
+}
+
+.services_body-item-title{
+    margin-top: 24px;
+    color: #38424D;
+    font-size: 22px;
+    font-weight: var(--secondary-fontWeight);
+    letter-spacing: var(--primary-spacing);
+}
+
+.services_body-item-text{
+    margin-top: 15px;
+    font-size: var(--primary-fontSize);
+    line-height: 24px;
+    letter-spacing: var(--primary-spacing);
+}
+/* gallery */
+.gallery{
+    margin-top: 130px;
+    margin-bottom: 130px;
+}
+.gallery_single{
+    position: relative;
+    margin-top: 30px;
+
+}
+.gallery_single img{
+    width: 100%;
+    border-top-left-radius: 55px;
+    border-bottom-right-radius: 55px;
+}
+.gallery_single > img{
+    vertical-align: middle;
+    border-style: none;
+}
+
+/* footer */
+.footer_area{
+    background: #38424D;
+    color: #ffffff;
+    margin-top: 260px;
+}
+.footer_wrap{
+    padding-top: 80px;
+    padding-bottom: 130px;
+}
+.footer_about{
+    margin-top: 50px;
+}
+.footer_about-logo{
+    font-size: 24px;
+  font-weight: var(--secondary-fontWeight);
+  line-height: 28px;
+  letter-spacing: var(--primary-spacing);
+  color: var(--secondary-color);
+}
+.footer_about-text{
+    margin-top: 25px;
+    font-size: var(--primary-fontSize);
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: var(--primary-spacing);
+}
+.social{
+    list-style: none;
+    display: flex;
+}
