@@ -23,3 +23,7 @@ def services():
 @app.route("/")
 def index():
     return render_template("index.html")
+
+@app.route("/places")
+def places():
+    return render_template("places.html")
