@@ -4,15 +4,24 @@ from geoalchemy2 import Geometry
 # from app import login
 from werkzeug.security import generate_password_hash, check_password_hash
 
-class places(db.Model):
-    __tablename__ = 'places'
+class tourist_area(db.Model):
+    __tablename__ = 'tourist_area'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, index=True, unique=True)
+    description = db.Column(db.String)
+    image = db.Column(db.String, nullable=False)
+    geom = db.Column(Geometry('POLYGON', srid=4326))
+    # One to many
+    place = db.relationship('place', backref='tourist_area', lazy='True')
+class place(db.Model):
+    __tablename__ = 'place'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.Text, nullable=False)
     image = db.Column(db.String, nullable=False)
     geom = db.Column(Geometry('POLYGON', srid=4326))
     # One to Many
-    service = db.relationship('services', backref='places', lazy=True)
+    service = db.relationship('services', backref='place', lazy=True)
     # Many to Many
     # place = db.relationship('Place', backref='users', lazy=True)
 
