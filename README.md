@@ -1,6 +1,6 @@
-# promote-tourism-in-Vinh-Phuc
+# Promote tourism in Vinh Phuc province
 
-web gis promote tourism in Vinh Phuc province
+Web gis promote tourism in Vinh Phuc province
 
 ## Authors
 
