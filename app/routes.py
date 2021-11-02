@@ -1,6 +1,5 @@
 from flask import render_template
 from app import app
-from app import app
 from app.models import *
 from flask import json, render_template, request, redirect
 from flask.json import jsonify
@@ -12,13 +11,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 # from config import Config
 
-engine = create_engine('')
+engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'], convert_unicode=True)
 da = scoped_session(sessionmaker(bind=engine))
-
-
-@app.route('/services')
-def services():
-    return render_template('services.html')
   
 @app.route("/")
 def index():
