@@ -1,0 +1,16 @@
+{% for page in services.iter_pages(left_edge=2, left_current=2, right_current=2, right_edge=2) %}
+{% if page %}
+<li class="page-item {% if page == services.page %}active{% endif %}">
+    <a class="page-link" href="{{ url_for('services', page_num=page) }}"
+        load-page="{{ url_for('load_page', page_num=page) }}">
+        {{ page }}
+    </a>
+</li>
+{% else %}
+<li class="page-item disabled">
+    <a class="page-link">
+        ...
+    </a>
+</li>
+{% endif %}
+{% endfor %}
