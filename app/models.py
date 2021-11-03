@@ -1,40 +1,49 @@
 from app import db
 from datetime import datetime
-from geoalchemy2 import Geometry
+from geoalchemy2.types import Geometry
+
 # from app import login
 from werkzeug.security import generate_password_hash, check_password_hash
 
-class places(db.Model):
-    __tablename__ = 'places'
+class Tourist_area(db.Model):
+    __tablename__ = 'tourist_area'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, index=True, unique=True)
+    description = db.Column(db.String)
+    image = db.Column(db.String, nullable=False)
+    geom = db.Column(Geometry('POLYGON', srid=4326))
+class Place(db.Model):
+    __tablename__ = 'place'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.Text, nullable=False)
     image = db.Column(db.String, nullable=False)
     geom = db.Column(Geometry('POLYGON', srid=4326))
-    # One to Many
-    service = db.relationship('services', backref='places', lazy=True)
-    # Many to Many
-    # place = db.relationship('Place', backref='users', lazy=True)
+    id_tourist_area = db.Column(db.Integer, db.ForeignKey('tourist_area.id'))
 
-class posts(db.Model):
+class Posts(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     content = db.Column(db.Text, nullable=False)
     image = db.Column(db.String, nullable=False)
-    id_place = db.Column(db.Integer, db.ForeignKey('places.id'))
+    id_tourist_area = db.Column(db.Integer, db.ForeignKey('tourist_area.id'))
+    id_place = db.Column(db.Integer, db.ForeignKey('place.id'))
     id_review = db.Column(db.Integer, db.ForeignKey('reviews.id'))
 
-class reviews(db.Model):
+class Reviews(db.Model):
+    __tablename__ = 'reviews'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     rating = db.Column(db.Integer)
     review = db.Column(db.Text, nullable=False)
-    id_place = db.Column(db.Integer, db.ForeignKey('places.id'))
+    id_tourist_area = db.Column(db.Integer, db.ForeignKey('tourist_area.id'))
+    id_place = db.Column(db.Integer, db.ForeignKey('place.id'))
     id_service = db.Column(db.Integer, db.ForeignKey('services.id'))
     id_user = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-class services(db.Model):
+class Services(db.Model):
+    __tablename__ = 'services'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     image = db.Column(db.String, nullable=False)
@@ -42,12 +51,13 @@ class services(db.Model):
     phone = db.Column(db.String, nullable=False)
     email = db.Column(db.String, nullable=False)
     address = db.Column(db.String, nullable=False)
-    id_place = db.Column(db.Integer, db.ForeignKey('places.id'))
+    id_tourist_area = db.Column(db.Integer, db.ForeignKey('tourist_area.id'))
     type = db.Column(db.String, nullable=False)
     # Many to Many
     # place = db.relationship('places', backref='services', lazy=True)
 
-class users(db.Model):
+class Users(db.Model):
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, nullable=False, unique=True)
     name = db.Column(db.String, nullable=False)
@@ -64,15 +74,15 @@ class users(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
-class user(users):
-    __tablename__ = 'users'
+class User(Users):
+    __tablename__ = 'user'
     __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
     __mapper_args__ = {
         'polymorphic_identity': 'user'
     }
 
-class admin(users):
+class Admin(Users):
     __tablename__ = 'admins'
     id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
     __mapper_args__ = {
