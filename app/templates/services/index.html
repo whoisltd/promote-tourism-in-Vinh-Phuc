@@ -113,24 +113,14 @@
 							</header>
 							<div class="filter-content collapse show" id="collapse_1" style="">
 								<div class="card-body">
-									<form class="pb-3">
-										<div class="input-group">
-											<input type="text" class="form-control" placeholder="Search">
-											<div class="input-group-append">
-												<button class="btn btn-light" type="button"><i
-														class="fa fa-search"></i></button>
-											</div>
+									{% for area in areas %}
+									<label class="custom-control custom-checkbox">
+										<input type="checkbox" checked="" class="custom-control-input areas" value="{{ area.id }}">
+										<div class="custom-control-label">
+											{{ area.name }}
 										</div>
-									</form>
-
-									<ul class="list-menu">
-
-										{% for area in areas %}
-										<li><a href="{{ url_for('services', page_num=area.id) }}">{{ area.name }}</a>
-										</li>
-										{% endfor %}
-									</ul>
-
+									</label>
+									{% endfor %}
 								</div> <!-- card-body.// -->
 							</div>
 						</article> <!-- filter-group  .// -->
@@ -146,7 +136,7 @@
 								<div class="card-body">
 									{% for type in type_services %}
 									<label class="custom-control custom-checkbox">
-										<input type="checkbox" checked="" class="custom-control-input" value="{{ type.type }}">
+										<input type="checkbox" checked="" class="custom-control-input types" value="{{ type.type }}">
 										<div class="custom-control-label">
 											{{ type.type }}
 											<b class="badge badge-pill badge-light float-right">{{ type.quantity }}</b>
@@ -155,7 +145,8 @@
 									{% endfor %}
 								</div> <!-- card-body.// -->
 							</div>
-					</div> <!-- card.// -->
+						</article> 
+					</div><!-- card.// -->
 
 				</aside> <!-- col.// -->
 				<main class="col-md-9">
@@ -178,22 +169,10 @@
 							</div>
 						</div>
 					</header><!-- sect-heading -->
-
-					<div class="row" id="testttt">
+					<div id="testttt">
 						{% include 'services/items.html' %}
-					</div> <!-- row end.// -->
-
-					<nav class="mt-4" aria-label="Page navigation sample">
-						<ul class="pagination" id="page-services">
-							{% include 'services/load_page.html' %}
-							<!-- <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-							<li class="page-item active"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">Next</a></li> -->
-						</ul>
+					</div>
 					</nav>
-
 				</main> <!-- col.// -->
 
 			</div>
@@ -214,50 +193,7 @@
 		</div><!-- //container -->
 	</footer>
 	<!-- ========================= FOOTER END // ========================= -->
-	<script>
-		$(document).ready(function () {
-
-			$(document).on('click', '.page-link', function (event) {
-
-				var link = $(this).attr('href');
-				req = $.ajax({
-					data: $('.page-link').val(),
-					type: 'POST',
-					url: link
-				});
-
-				req.done(function (data) {
-					console.log(data);
-					$('#testttt').html(data);
-					// $('#page-services').html(data);
-				});
-				event.preventDefault();
-				var link1 = $(this).attr('load-page');
-				req1 = $.ajax({
-					data: $('.page-link').val(),
-					type: 'POST',
-					url: link1
-				});
-
-				req1.done(function (data) {
-					console.log(data);
-					// $('#testttt').html(data);
-					$('#page-services').html(data);
-				});
-				event.preventDefault();
-			});
-		});
-	</script>
-	<script>
-		$('.custom-control-input').click(function () {
-			if ($(this).prop('checked')) {
-				alert('is checked');
-			} else {
-				alert('is not checked');
-			}
-		})
-	</script>
-
+	<script src="{{ url_for('static', filename='js/services/services.js') }}"></script>
 
 </body>
 
