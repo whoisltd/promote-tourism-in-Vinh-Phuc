@@ -8,11 +8,21 @@
     <title>Landing Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
 
     <style>
         .about_image {
             background: url("{{ url_for('static',filename='images/anh2.jpeg') }}") no-repeat 0px 0px;
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .header-main-container {
+            background: url("{{ url_for('static',filename='images/hero-area.jpeg') }}") no-repeat 0px 0px;
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
         }
     </style>
 </head>
@@ -37,7 +47,7 @@
             </div>
         </div>
         <div class="header_main">
-            <div class="header-main-container bg_cover">
+            <div class="header-main-container">
                 <div class="container header_main-wrap">
                     <div class="row">
                         <div class="header_main-content">
@@ -58,7 +68,7 @@
     <!-- about -->
     <div class="about_area">
         <div class="about_wrapper">
-            <div class="about_image bg_cover"></div>
+            <div class="about_image"></div>
             <div class="container about_main-wrap">
                 <div class="row flex-col justify-content-end">
                     <div class="col-lg-7">
