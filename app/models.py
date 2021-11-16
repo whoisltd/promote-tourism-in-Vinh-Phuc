@@ -14,7 +14,7 @@ class Tourist_area(db.Model):
     geom = db.Column(Geometry('POLYGON', srid=4326))
 class Place(db.Model):
     __tablename__ = 'place'
-    id = db.Column(db.Integer, primary_key=True ,autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.Text, nullable=False)
     image = db.Column(db.String, nullable=False)
