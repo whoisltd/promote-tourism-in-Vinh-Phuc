@@ -30,22 +30,25 @@
 <body>
     <!-- header + menu -->
     <div class="header_area">
+
         <div class="header_navbar">
             <div class="container h-100">
                 <div class="header_navbar-wrap row d-flex">
                     <div class="col-3 header_logo">VPhuc Travel</div>
                     <div class="col-9 header_menu">
                         <ul class="d-flex justify-content-between header_menu-ul">
-                            <li><a class="header_menu-link" href="#">Landing Page</a></li>
-                            <li><a class="header_menu-link" href="#">Địa danh</a></li>
-                            <li><a class="header_menu-link" href="#">Dịch Vụ</a></li>
-                            <li><a class="header_menu-link" href="#">Bài Viết</a></li>
+                            <li><a class="header_menu-link" href="{{url_for('index')}}">Landing Page</a></li>
+                            <li><a class="header_menu-link" href="{{ url_for('places') }}">Địa
+                                    danh</a></li>
+                            <li><a class="header_menu-link" href="{{ url_for('def_service') }}">Dịch Vụ</a></li>
+                            <li><a class="header_menu-link" href="{{ url_for('posts') }}">Bài Viết</a></li>
                             <li><a class="header_menu-link" href="#">Gis</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="header_main">
             <div class="header-main-container">
                 <div class="container header_main-wrap">
