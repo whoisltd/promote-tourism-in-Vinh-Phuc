@@ -9,7 +9,7 @@ from flask import json, render_template, request, redirect, jsonify
 from flask_paginate import Pagination, get_page_parameter
 per_page = 6
 @app.route('/posts', methods=['GET', 'POST'])
-def def_posts():
+def posts():
     try:
         page = int(request.args.get(get_page_parameter(), 1))
     except ValueError:
