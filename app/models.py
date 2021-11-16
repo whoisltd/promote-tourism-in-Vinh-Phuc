@@ -14,7 +14,7 @@ class Tourist_area(db.Model):
     geom = db.Column(Geometry('POLYGON', srid=4326))
 class Place(db.Model):
     __tablename__ = 'place'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.Text, nullable=False)
     image = db.Column(db.String, nullable=False)
@@ -23,7 +23,7 @@ class Place(db.Model):
 
 class Posts(db.Model):
     __tablename__ = 'posts'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String, nullable=False)
     content = db.Column(db.Text, nullable=False)
     image = db.Column(db.String, nullable=False)
@@ -44,7 +44,7 @@ class Reviews(db.Model):
 
 class Services(db.Model):
     __tablename__ = 'services'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String, nullable=False)
     image = db.Column(db.String, nullable=False)
     description = db.Column(db.Text, nullable=False)
