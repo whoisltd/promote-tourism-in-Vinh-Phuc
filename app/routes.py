@@ -18,6 +18,3 @@ da = scoped_session(sessionmaker(bind=engine))
 def index():
     return render_template("index.html")
 
-@app.route("/places")
-def places():
-    return render_template("places.html")

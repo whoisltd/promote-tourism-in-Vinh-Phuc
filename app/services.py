@@ -11,11 +11,11 @@ per_page = 6
 @app.route('/services', methods=['GET', 'POST'])
 def def_service():
     try:
-        page = int(request.args.get(get_page_parameter(), 1))
+        page = int(request.args.get(get_page_parameter(), 1))  # phân trang
     except ValueError:
         page = 1
-    i=(page-1)*per_page
-    services = Services.query.all()
+    i=(page-1)*per_page     # lấy dịch vụ từ 1 đến 6 hoặc 6 đến 12
+    services = Services.query.all()  # lấy ra toàn bộ
     type_services = Services.query.\
     with_entities(Services.type.label('type'), func.count(Services.type).\
     label('quantity')).group_by(Services.type).all()

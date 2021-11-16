@@ -11,8 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         .header__background{
            background-image: url("{{ url_for('static', filename='images/places/tamdaoo.png') }}");
@@ -64,32 +62,31 @@
                 <iframe src="https://www.youtube.com/embed/GAeBmeYnOIQ?autoplay=1&mute=1" class="place__video" frameborder="0"></iframe>
                 <h4 class="place__title place__title--heading">Trải nghiệm điểm đến</h4>
                 <div class="place__list">
-                    <div class="place__item">
+                    {% for place in places %}
+                    
+                    {% if loop.index is divisibleby 2 %} 
+                        <div class="place__item flex-reverse">
+                    {% else %}
+                        <div class="place__item ">   
+                    {% endif %}
+                    
                         <div class="place__info">
-                            <h4 class="place__title place__title--item">Quảng Trường Trung Tâm</h4>
+                            <h4 class="place__title place__title--item">{{ place.title }}</h4>
                             <p class="place__desc place__desc--infor">
-                                Quảng trường trung tâm Tam Đảo là địa điểm vui chơi chính và nằm ngay tại trung tâm của khu 1, thị trấn Tam Đảo. Khu vực này được quy hoạch xây dựng với sân quảng trường rộng, có hàng ghế bậc thang và rất nhiều thiết kế đẹp mắt phục vụ du khách ghé thăm.Địa điểm này rất nhiều màu sắc bởi nhiều cảnh quan khác nhau như dòng chữ Tam Đảo khổng lồ, hàng cây, ghế đá, vườn hoa. Tại quảng trường Trung tâm Tam Đảo bạn sẽ được thỏa sức check in để cho ra những tấm hình đẹp. Hiện nay vào các buổi tối thường có giao lưu văn nghệ tại đây, là show diễn âm nhạc lớn quy tụ các bạn trẻ đam mê âm nhạc biểu diễn.
+                                {{ place.description }}
                             </p>
                             <a href="http://dulich24.com.vn/du-lich-huyen-tam-dao/quang-truong-trung-tam-tam-dao-id-7681" class="btn desc" target="_blank">Chi tiết</a>
                         </div>
                         <div class="slide">
                             <div class="slide__item">
-                                <img src="{{ url_for('static', filename='images/places/qttt0.jpg') }}" alt="" class="slide__image">
-                            </div>
-                            <div class="slide__item">
-                                <img src="{{ url_for('static', filename='images/places/qttt1.png') }}" alt="" class="slide__image">
-                            </div>
-                            <div class="slide__item">
-                                <img src="{{ url_for('static', filename='images/places/qttt2.png') }}" alt="" class="slide__image">
-                            </div>
-                            <div class="slide__item">
-                                <img src="{{ url_for('static', filename='images/places/qttt3.png') }}" alt="" class="slide__image">
+                                <img src="{{ url_for('static', filename=place.image) }}" alt="" class="slide__image">
                             </div>
                         </div>
 
 
                     </div>
-                    <div class="place__item flex-reverse"  >
+                    {% endfor %}
+                    <!-- <div class="place__item flex-reverse"  >
                         <div class="place__info">
                             <h4 class="place__title place__title--item">Nhà Thờ Đá Tam Đảo</h4>
                             <p class="place__desc place__desc--infor">
@@ -99,16 +96,7 @@
                         </div>
                         <div class="slide">
                             <div class="slide__item">
-                                <img src="{{ url_for('static', filename='images/places/church1.jpg') }}" alt="" class="slide__image">
-                            </div>
-                            <div class="slide__item">
                                 <img src="{{ url_for('static', filename='images/places/church2.jpg') }}" alt="" class="slide__image">
-                            </div>
-                            <div class="slide__item">
-                                <img src="{{ url_for('static', filename='images/places/church3.jpg') }}" alt="" class="slide__image">
-                            </div>
-                            <div class="slide__item">
-                                <img src="{{ url_for('static', filename='images/places/church4.jpg') }}" alt="" class="slide__image">
                             </div>
                         </div>
 
@@ -124,16 +112,7 @@
                         </div>
                         <div class="slide">
                             <div class="slide__item">
-                                <img src="{{ url_for('static', filename='images/places/quangio1.jpg') }}" alt="" class="slide__image">
-                            </div>
-                            <div class="slide__item">
                                 <img src="{{ url_for('static', filename='images/places/quangio2.png') }}" alt="" class="slide__image">
-                            </div>
-                            <div class="slide__item">
-                                <img src="{{ url_for('static', filename='images/places/quangio3.jpg') }}" alt="" class="slide__image">
-                            </div>
-                            <div class="slide__item">
-                                <img src="{{ url_for('static', filename='images/places/quangio4.jpg') }}" alt="" class="slide__image">
                             </div>
                         </div>
 
@@ -149,21 +128,13 @@
                         </div>
                         <div class="slide">
                             <div class="slide__item">
-                                <img src="{{ url_for('static', filename='images/places/thacbac1.png') }}" alt="" class="slide__image">
-                            </div>
-                            <div class="slide__item">
-                                <img src="{{ url_for('static', filename='images/places/thacbac2.png') }}" alt="" class="slide__image">
-                            </div>
-                            <div class="slide__item">
-                                <img src="{{ url_for('static', filename='images/places/thacbac3.png') }}" alt="" class="slide__image">
-                            </div>
-                            <div class="slide__item">
                                 <img src="{{ url_for('static', filename='images/places/thacbac4.png') }}" alt="" class="slide__image">
                             </div>
                         </div>
 
 
-                    </div>
+                    </div> -->
+                    
                 </div>
             </div>
             
@@ -222,7 +193,7 @@
         </div>
     </footer>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $('.slide').slick({
@@ -230,7 +201,7 @@
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
-});
+}); -->
     </script>
 </body>
 </html>
