@@ -115,7 +115,8 @@
 								<div class="card-body">
 									{% for area in areas %}
 									<label class="custom-control custom-checkbox">
-										<input type="checkbox" checked="" class="custom-control-input areas" value="{{ area.id }}">
+										<input type="checkbox" checked="" class="custom-control-input areas"
+											value="{{ area.id }}">
 										<div class="custom-control-label">
 											{{ area.name }}
 										</div>
@@ -136,7 +137,8 @@
 								<div class="card-body">
 									{% for type in type_services %}
 									<label class="custom-control custom-checkbox">
-										<input type="checkbox" checked="" class="custom-control-input types" value="{{ type.type }}">
+										<input type="checkbox" checked="" class="custom-control-input types"
+											value="{{ type.type }}">
 										<div class="custom-control-label">
 											{{ type.type }}
 											<b class="badge badge-pill badge-light float-right">{{ type.quantity }}</b>
@@ -145,7 +147,7 @@
 									{% endfor %}
 								</div> <!-- card-body.// -->
 							</div>
-						</article> 
+						</article>
 					</div><!-- card.// -->
 
 				</aside> <!-- col.// -->
