@@ -1,0 +1,29 @@
+<div class="row {% if posts|length == 0 %}
+justify-content-center
+{% endif %}">
+    {% if posts|length %}
+        {% for post in posts %}
+            <div class="col-md-4">
+                <figure class="card card-product-grid">
+                    <div class="img-wrap">
+                        <!-- <span class="badge badge-danger"> NEW </span> -->
+                        <img src="{{ url_for('static', filename=post.image) }}">
+                        <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
+                    </div> <!-- img-wrap.// -->
+                    <figcaption class="info-wrap">
+                        <div class="fix-height">
+                            <a href="#" class="title">{{ post.title }}</a>
+                            <div class="price-wrap mt-2">
+                                <span class="text-truncate">{{ post.content }}</span>
+                            </div> <!-- price-wrap.// -->
+                        </div>
+                        <a href="#" class="btn btn-block btn-primary">More info</a>
+                    </figcaption>
+                </figure>
+            </div> <!-- col.// -->
+        {% endfor %}
+    {% else %}
+        <h3 class="text-center">No posts found</h3>
+    {% endif %}
+</div>
+{{ pagination.links }}

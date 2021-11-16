@@ -1,0 +1,155 @@
+
+	<meta charset="utf-8">
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="cache-control" content="max-age=604800" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Website title - bootstrap html template</title>
+
+	<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- jQuery -->
+	<script src="{{ url_for('static', filename='js/jquery-2.0.0.min.js') }}" type="text/javascript"></script>
+
+	<!-- Bootstrap4 files-->
+	<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
+	<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+
+	<!-- Font awesome 5 -->
+	<link href="{{ url_for('static', filename='fonts/fontawesome/css/all.min.css') }}" type="text/css" rel="stylesheet">
+
+	<!-- plugin: fancybox  -->
+	<script src="plugins/fancybox/fancybox.min.js" type="text/javascript"></script>
+	<link href="plugins/fancybox/fancybox.min.css" type="text/css" rel="stylesheet">
+
+	<!-- custom style -->
+	<link href="{{ url_for('static', filename='css/ui.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ url_for('static', filename='css/responsive.css') }}" rel="stylesheet"
+		media="only screen and (max-width: 1200px)" />
+
+	<!-- custom javascript -->
+	<script src="{{ url_for('static', filename='js/script.js') }}" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		/// some script
+
+		// jquery ready start
+		$(document).ready(function () {
+			// jQuery code
+
+		});
+// jquery end
+	</script>
+
+</head>
+
+<body>
+
+	<header class="section-header">
+		<section class="header-main border-bottom">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-2 col-4">
+						<div class="brand-wrap">
+							<img class="logo" src="images/logo.png">
+						</div> <!-- brand-wrap.// -->
+					</div>
+				</div> <!-- col.// -->
+
+			</div> <!-- row.// -->
+			</div> <!-- container.// -->
+		</section> <!-- header-main .// -->
+	</header> <!-- section-header.// -->
+
+
+
+	<!-- ========================= SECTION PAGETOP ========================= -->
+	<section class="section-pagetop bg">
+		<div class="container">
+			<h2 class="title-page">Bài viết</h2>
+		</div> <!-- container //  -->
+	</section>
+
+	<!-- ========================= SECTION INTRO END// ========================= -->
+
+	<!-- ========================= SECTION CONTENT ========================= -->
+	<section class="section-content padding-y">
+		<div class="container">
+			<div class="row">
+			</div>
+			<div class="row">
+				<aside class="col-md-3">
+					<div class="card">
+						<article class="filter-group">
+							<header class="card-header">
+								<a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true"
+									class="">
+									<i class="icon-control fa fa-chevron-down"></i>
+									<h6 class="title">Khu du lịch</h6>
+								</a>
+							</header>
+							<div class="filter-content collapse show" id="collapse_1" style="">
+								<div class="card-body">
+									{% for area in areas %}
+									<label class="custom-control custom-checkbox">
+										<input type="checkbox" checked="" class="custom-control-input areas" value="{{ area.id }}">
+										<div class="custom-control-label">
+											{{ area.name }}
+										</div>
+									</label>
+									{% endfor %}
+								</div> <!-- card-body.// -->
+							</div>
+						</article> 
+					</div><!-- card.// -->
+				</aside> <!-- col.// -->
+				<main class="col-md-9">
+
+					<header class="border-bottom mb-4 pb-3">
+						<div class="form-inline">
+							<span class="mr-md-auto">32 Items found </span>
+							<select class="mr-2 form-control">
+								<option>Latest items</option>
+								<option>Trending</option>
+								<option>Most Popular</option>
+								<option>Cheapest</option>
+							</select>
+							<div class="btn-group">
+								<a href="#" class="btn btn-outline-secondary" data-toggle="tooltip" title="List view">
+									<i class="fa fa-bars"></i></a>
+								<a href="#" class="btn  btn-outline-secondary active" data-toggle="tooltip"
+									title="Grid view">
+									<i class="fa fa-th"></i></a>
+							</div>
+						</div>
+					</header><!-- sect-heading -->
+				<div id="testttt">
+					{% include 'posts/items.html' %}
+				</div>
+			</div>
+				</main> <!-- col.// -->
+
+			</div>
+
+		</div> <!-- container .//  -->
+	</section>
+	<!-- ========================= SECTION CONTENT END// ========================= -->
+
+	<!-- ========================= FOOTER ========================= -->
+	<footer class="section-footer border-top padding-y">
+		<div class="container">
+			<p class="float-md-right">
+				&copy Copyright 2019 All rights reserved
+			</p>
+			<p>
+				<a href="#">Terms and conditions</a>
+			</p>
+		</div><!-- //container -->
+	</footer>
+	<!-- ========================= FOOTER END // ========================= -->
+
+
+	<script src="{{ url_for('static', filename='js/posts/posts.js') }}"></script>
+</body>
+
+</html>
