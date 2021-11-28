@@ -1,60 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-        .header__background{
-           background-image: url("{{ url_for('static', filename='images/places/tamdaoo.png') }}");
-        }
-    </style>
-</head>
-<body>
-    <!-- header -->
-    <div class="header">
-        <div class="header__background" >
-            
-                <div class="header__top">
-                    <a href="" class="logo-link">
-                        <img src="{{ url_for('static', filename='images/places/mona-logo-o.png') }}" alt="" class="logo">
-                    </a>
-                    <ul class="navbar">
-                        <li class="navbar__item">
-                            <a href="">Landing Page</a>
-                        </li>
-                        <li class="navbar__item">
-                            <a href="">Địa danh </a>
-                        </li>
-                        <li class="navbar__item">
-                            <a href="">Dịch vụ</a>
-                        </li>
-                        <li class="navbar__item">
-                            <a href="">Bài viết</a>
-                        </li>
-                        <li class="navbar__item">
-                            <a href="">Gis</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="banner">
-                    <h2 class="banner__title">Explore The World with <span>Tam Dao Travel</span></h2>
-                    <p class="banner__desc desc">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quidem explicabo distinctio accusamus molestiae dolorum.
-                    </p>
-                    <a href="" class="btn btn--banner">Explore Now</a>
-                </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Địa danh</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+            integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+            integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+            integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/places.css') }}">
+    
+        <style>
+            .header__background {
+                background-image: url("{{ url_for('static', filename='images/places/tamdaoo.png') }}");
+            }
+        </style>
+    </head>
+<body>
+   <!-- header -->
+   <div class="header">
+    <div class="header__background">
+        <div class="placePage-header_navbar">
+            <div class="placePage-header__top container h-100">
+                <div class="placePage-header_navbar-wrap row d-flex">
+                    <div class="col-3 placePage-header_logo">VPhuc Travel</div>
+                    <div class="col-9 placePage-header_menu">
+                        <ul class="d-flex justify-content-between placePage-header_menu-ul">
+                            <li><a class="placePage-header_menu-link" href="{{url_for('index')}}">Landing Page</a>
+                            </li>
+                            <li><a class="placePage-header_menu-link" href="{{ url_for('places') }}">Địa
+                                    danh</a></li>
+                            <li><a class="placePage-header_menu-link" href="{{ url_for('def_service') }}">Dịch
+                                    Vụ</a>
+                            </li>
+                            <li><a class="placePage-header_menu-link" href="{{ url_for('posts') }}">Bài Viết</a>
+                            </li>
+                            <li><a class="placePage-header_menu-link" href="#">Gis</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="banner">
+            <h2 class="banner__title">Explore The World with <span>Tam Dao Travel</span></h2>
+            <p class="banner__desc desc">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quidem explicabo distinctio accusamus
+                molestiae dolorum.
+            </p>
+            <a href="" class="btn btn--banner">Explore Now</a>
+        </div>
+
+
     </div>
+</div>
     <!-- place -->
     <div class="wrapper">
         <div class="container">
