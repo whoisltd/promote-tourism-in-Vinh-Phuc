@@ -4,4 +4,5 @@ from app.models import *
 
 @app.route("/places")
 def places():
-    return render_template("places.html")
+    places = Place.query.all()
+    return render_template("places/places.html",places = places)

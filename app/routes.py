@@ -13,11 +13,12 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 
 # from config import Config
 
-engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'], convert_unicode=True)
+engine = create_engine(
+    "postgresql://jxjsmnnorqvphr:d72266739d8fa38e2d4d814a9ea062d558710148b55a8a0cd037cf5fb57a04e4@ec2-18-210-95-55.compute-1.amazonaws.com:5432/d8gc0s3lfimj2g"
+)
 da = scoped_session(sessionmaker(bind=engine))
 
 @app.route("/")
 def index():
     return render_template("index.html")
-
 

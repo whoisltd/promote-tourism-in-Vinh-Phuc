@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Địa danh</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+            integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+            integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+            integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/places.css') }}">
+    
+        <style>
+            .header__background {
+                background-image: url("{{ url_for('static', filename='images/places/tamdaoo.png') }}");
+            }
+        </style>
+    </head>
+<body>
+   <!-- header -->
+   <div class="header">
+    <div class="header__background">
+        <div class="placePage-header_navbar">
+            <div class="placePage-header__top container h-100">
+                <div class="placePage-header_navbar-wrap row d-flex">
+                    <div class="col-3 placePage-header_logo">VPhuc Travel</div>
+                    <div class="col-9 placePage-header_menu">
+                        <ul class="d-flex justify-content-between placePage-header_menu-ul">
+                            <li><a class="placePage-header_menu-link" href="{{url_for('index')}}">Landing Page</a>
+                            </li>
+                            <li><a class="placePage-header_menu-link" href="{{ url_for('places') }}">Địa
+                                    danh</a></li>
+                            <li><a class="placePage-header_menu-link" href="{{ url_for('def_service') }}">Dịch
+                                    Vụ</a>
+                            </li>
+                            <li><a class="placePage-header_menu-link" href="{{ url_for('posts') }}">Bài Viết</a>
+                            </li>
+                            <li><a class="placePage-header_menu-link" href="#">Gis</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="banner">
+            <h2 class="banner__title">Explore The World with <span>Tam Dao Travel</span></h2>
+            <p class="banner__desc desc">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quidem explicabo distinctio accusamus
+                molestiae dolorum.
+            </p>
+            <a href="" class="btn btn--banner">Explore Now</a>
+        </div>
+
+
+    </div>
+</div>
+    <!-- place -->
+    <div class="wrapper">
+        <div class="container">
+            <div class="place">
+                <iframe src="https://www.youtube.com/embed/GAeBmeYnOIQ?autoplay=1&mute=1" class="place__video" frameborder="0"></iframe>
+                <h4 class="place__title place__title--heading">Trải nghiệm điểm đến</h4>
+                <div class="place__list">
+                    {% for place in places %}
+                    
+                    {% if loop.index is divisibleby 2 %} 
+                        <div class="place__item flex-reverse">
+                    {% else %}
+                        <div class="place__item ">   
+                    {% endif %}
+                    
+                        <div class="place__info">
+                            <h4 class="place__title place__title--item">{{ place.title }}</h4>
+                            <p class="place__desc place__desc--infor">
+                                {{ place.description }} <span class="dots">...</span>
+                                <span class="moreText">{{ place.description_more}}</span>
+                            </p>
+                            <a href="http://dulich24.com.vn/du-lich-huyen-tam-dao/quang-truong-trung-tam-tam-dao-id-7681" class="btn desc" target="_blank">Chi tiết</a>
+                        </div>
+                        <div class="slide">
+                            <div class="slide__item">
+                                <img src="{{ url_for('static', filename=place.image) }}" alt="" class="slide__image">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    {% endfor %}
+                    <!-- <div class="place__item flex-reverse"  >
+                        <div class="place__info">
+                            <h4 class="place__title place__title--item">Nhà Thờ Đá Tam Đảo</h4>
+                            <p class="place__desc place__desc--infor">
+                                Đây là điểm vui chơi chính ở Tam Đảo, nằm ngay tại trung tâm của khu 1, thị trấn Tam Đảo, khu vực này được quy hoạch xây dựng đẹp với sân quảng trường rộng, trong quảng trường có hàng ghế bậc thang và nhiều công trình đẹp để bạn chụp ảnh. Đây cũng là điểm du lịch đầu tiên bạn gặp khi bước chân vào thị trấn, nhưng quảng trường đẹp nhất là vào buổi tối, khi các nhóm bạn trẻ tổ chức các lễ hội âm thanh cộng đồng, không khí thật sự sôi động, cuốn hút.
+                            </p>
+                            <a href="https://vietnam.vnanet.vn/vietnamese/nha-tho-da-tam-dao/57139.html" class="btn btn--desc" target="_blank">Chi tiết</a>
+                        </div>
+                        <div class="slide">
+                            <div class="slide__item">
+                                <img src="{{ url_for('static', filename='images/places/church2.jpg') }}" alt="" class="slide__image">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="place__item">
+                        <div class="place__info">
+                            <h4 class="place__title place__title--item">Quán Cafe Gió Tam Đảo</h4>
+                            <p class="place__desc place__desc--infor">
+                                Tuy là quán cafe, nhưng đây là điểm check-in rất thú vị của Tam Đảo, được xây dựng trên vị trí độc đáo bên sườn đồi, tầm nhìn rộng, ngồi tại sân của quán nhâm nhi cốc cafe và ngắm toàn cảnh thị trấn Tam Đảo là trải nghiệm rất thú vị, đây cũng là điểm chụp hình siêu đẹp ở Tam Đảo.
+                            </p>
+                            <a href="https://clickladi.vn/review-ca-phe-quan-gio-tam-dao-ve-nha-di-con/" class="btn desc" target="_blank">Chi tiết</a>
+                        </div>
+                        <div class="slide">
+                            <div class="slide__item">
+                                <img src="{{ url_for('static', filename='images/places/quangio2.png') }}" alt="" class="slide__image">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="place__item flex-reverse"  >
+                        <div class="place__info">
+                            <h4 class="place__title place__title--item">Thác Bạc</h4>
+                            <p class="place__desc place__desc--infor">
+                                Thác Bạc là con thác đẹp nhất tại Tam Đảo, còn hoang sơ nhất và ẩn giấu mình trong núi có dòng nước trong vắt sở dĩ nước ở đây trong xanh tới vậy là nhờ được bắt nguồn từ các con suối trên núi đổ vào và dòng nước đầu nguồn le lỏi qua các hốc đá rồi chảy xuống đập vào những hẻm đá tạo thành dòng chảy trắng xóa rồi chảy mạnh xuống chân thác. Không chỉ vậy vào mùa mưa nước chảy mạnh hơn tạo dòng nước thác sẽ dữ dội hơn, đẹp hơn.. Những khi trời nắng kéo dài, dòng nước ít hơn, chảy nhẹ nhàng hơn. 
+                            </p>
+                            <a href="https://ximgo.com/tin-tuc/kinh-nghiem-du-lich-thac-bac-vinh-phuc-tu-a-z-1688" class="btn desc" target="_blank">Chi tiết</a>
+                        </div>
+                        <div class="slide">
+                            <div class="slide__item">
+                                <img src="{{ url_for('static', filename='images/places/thacbac4.png') }}" alt="" class="slide__image">
+                            </div>
+                        </div>
+
+
+                    </div> -->
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="tip">
+        <h4 class="tip__title">Travel tips</h4>
+        <p class="tip__desc">Prepare for your trip with these practical articles </p>
+        <div class="tip__list">
+            <div class="tip__item">
+                <img src="{{ url_for('static', filename='images/places/tip1.jpg') }}" alt="">
+                <p class="tip__text">Visa</p>
+            </div>
+            <div class="tip__item">
+                <img src="{{ url_for('static', filename='images/places/tip2.jpg') }}" alt="">
+                <p class="tip__text">Transport</p>
+            </div>
+            <div class="tip__item">
+                <img src="{{ url_for('static', filename='images/places/tip3.jpg') }}" alt="">
+                <p class="tip__text">Weather</p>
+            </div>
+            <div class="tip__item">
+                <img src="{{ url_for('static', filename='images/places/tip4.jpg') }}" alt="">
+                <p class="tip__text">Safety</p>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="signup padding__footer">
+            <h4 class="footer__title">SIGN UP FOR OUR NEWSLETTER</h4>
+            <p class="footer__text">Receive new travel stories from Vietnam once a month in your inbox.</p>
+            <input type="text" class="signup__btn signup__btn--input">
+            <input type="submit" class="signup__btn signup__btn--button" value="Sign up">
+        </div>
+        <div class="useful-link padding__footer">
+            <h4 class="footer__title">useful link</h4>
+            <p class="footer__text">Stay at Home Kit</p>
+            <p class="footer__text">Beginer Guide</p>
+            <p class="footer__text">New and Media</p>
+            <p class="footer__text">Industry Resources</p>
+        </div>
+        <div class="social padding__footer">
+            <h4 class="footer__title">follow us on</h4>
+            <div class="social__list">
+                <a href="" class="social__link">
+                    <i class="fab fa-facebook-square"></i>
+                </a>
+                <a href="" class="social__link">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="" class="social__link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <p class="footer__text">Welcome to the official website of Vietnam National Administration of Tourism. Visit our social media pages for more travel inspiration.</p>
+        </div>
+    </footer>
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $('.slide').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+}); -->
+    </script>
+</body>
+</html>
