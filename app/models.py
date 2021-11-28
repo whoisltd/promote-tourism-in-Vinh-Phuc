@@ -17,6 +17,7 @@ class Place(db.Model):
     id = db.Column(db.Integer, primary_key=True ,autoincrement=True)
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.Text, nullable=False)
+    description_more = db.Column(db.Text, nullable=False)
     image = db.Column(db.String, nullable=False)
     geom = db.Column(Geometry('POLYGON', srid=4326))
     id_tourist_area = db.Column(db.Integer, db.ForeignKey('tourist_area.id'))
