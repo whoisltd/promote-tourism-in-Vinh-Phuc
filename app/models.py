@@ -14,13 +14,13 @@ class Tourist_area(db.Model):
     geom = db.Column(Geometry('POLYGON', srid=4326))
 class Place(db.Model):
     __tablename__ = 'place'
-    id = db.Column(db.Integer, primary_key=True ,autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.Text, nullable=False)
-    description_more = db.Column(db.Text, nullable=False)
     image = db.Column(db.String, nullable=False)
     geom = db.Column(Geometry('POLYGON', srid=4326))
     id_tourist_area = db.Column(db.Integer, db.ForeignKey('tourist_area.id'))
+    id_post = db.Column(db.Integer, db.ForeignKey('posts.id'))
 
 class Posts(db.Model):
     __tablename__ = 'posts'
