@@ -18,9 +18,9 @@ class Place(db.Model):
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.Text, nullable=False)
     image = db.Column(db.String, nullable=False)
-    geom = db.Column(Geometry('POLYGON', srid=4326))
+    geom = db.Column(Geometry('POINT', srid=4326))
     id_tourist_area = db.Column(db.Integer, db.ForeignKey('tourist_area.id'))
-
+    id_post = db.Column(db.Integer, db.ForeignKey('posts.id'))
 class Posts(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
