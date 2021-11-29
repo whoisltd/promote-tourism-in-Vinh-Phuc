@@ -10,6 +10,7 @@ Flask-SQLAlchemy==2.5.1
 Flask-WTF==0.15.1
 GeoAlchemy2==0.9.4
 greenlet==1.1.2
+gunicorn==20.1.0
 importlib-resources==5.2.2
 itsdangerous==2.0.1
 Jinja2==3.0.1
