@@ -9,7 +9,7 @@ from flask import json, render_template, request, redirect, jsonify
 geojson = ['{"crs":{"type": "name", "properties": {"name": "EPSG:4326"}},"type": "Point","coordinates": [105.64472004618987, 21.456268879998778]}',
 '{"crs":{"type": "name", "properties": {"name": "EPSG:4326"}},"type": "Point","coordinates": [105.5855035151476, 21.466358627392434]}',
 '{"crs":{"type": "name", "properties": {"name": "EPSG:4326"}},"type": "Point","coordinates": [105.59646717616441, 21.30037309018502]}',
-'{"crs":{"type": "name", "properties": {"name": "EPSG:4326"}},"type": "Point","coordinates": [21.30037309018502, 21.320349114412867]}']
+'{"crs":{"type": "name", "properties": {"name": "EPSG:4326"}},"type": "Point","coordinates": [105.71497395057379, 21.320349114412867]}']
 
 @app.route('/upload_geom', methods=['GET', 'POST'])
 def upload_geom():
