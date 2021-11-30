@@ -10,10 +10,10 @@ from flask.helpers import url_for
 from flask_wtf import *
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-
+import os
 # from config import Config
 
-engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'], convert_unicode=True)
+engine = create_engine(os.environ.get("SQLALCHEMY_DATABASE_URI"), convert_unicode=True)
 da = scoped_session(sessionmaker(bind=engine))
 
 @app.route("/")
