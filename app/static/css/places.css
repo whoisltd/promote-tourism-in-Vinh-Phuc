@@ -1,0 +1,63 @@
+:root {
+  --primary-color: #ffffff;
+  --secondary-color: #eec41e;
+  --primary-fontSize: 16px;
+  --primary-fontWeight: 400;
+  --secondary-fontWeight: 700;
+  --primary-spacing: 150%;
+}
+
+.header__background::after {
+  position: absolute;
+  content: "";
+  background-color: rgba(56, 66, 77, 0.24);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.placePage-header_navbar {
+  height: 86px;
+  width: 100%;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.21);
+  width: 100%;
+  z-index: 99;
+  transition: all 0.3s ease-out 0s;
+  position: relative;
+}
+
+.placePage-header_navbar-wrap {
+  height: 100%;
+}
+
+.placePage-header_logo {
+  margin: auto 0;
+  padding: 0;
+  font-size: 24px;
+  font-weight: var(--secondary-fontWeight);
+  line-height: 28px;
+  letter-spacing: var(--primary-spacing);
+  color: var(--secondary-color);
+}
+
+.placePage-header_menu {
+  margin: auto 0;
+  padding: 0;
+}
+
+.placePage-header_menu-ul {
+  list-style: none;
+  margin: 0;
+}
+
+.placePage-header_menu-link {
+  text-decoration: none !important;
+  color: var(--primary-color);
+  font-style: var(--primary-fontSize);
+  font-weight: var(--primary-fontWeight);
+  letter-spacing: var(--primary-spacing);
+}
+.placePage-header_menu-link:hover {
+  color: var(--secondary-color);
+}
