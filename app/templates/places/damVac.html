@@ -27,7 +27,7 @@
     
         <style>
             .header__background {
-                background-image: url("{{ url_for('static', filename='images/places/b1.jpg') }}");
+                background-image: url("{{ url_for('static', filename='images/places/b31.jpg') }}");
             }
         </style>
     </head>
@@ -77,9 +77,9 @@
         </div>
 
         <div class="banner">
-            <h2 class="banner__title">Explore The World with <span>Tam Dao Travel</span></h2>
+            <h2 class="banner__title">Explore The World with <span>Dam Vac Travel</span></h2>
             <p class="banner__desc desc">
-                Khu du lịch Tam Đảo nằm trên dãy núi Tam Đảo ở độ cao trên 900 m so với mực nước biển, khu du lịch Tam Đảo có phong cảnh núi non hùng vĩ, bao quát cả một vùng đồng bằng Bắc bộ rộng lớn, Khí hậu mát mẻ quanh năm
+                Đầm Vạc thuộc thành phố Vĩnh Yên, là một đầm thiên tạo từ hàng nghìn năm trước đây. Đầm Vạc kể cả các nhánh luồn lách vào từng xóm, từng phường, xã của thành phố có tổng diện tích mặt nước lên đến 48,4 km2, có đáy sâu, nơi sâu nhất khoảng 4,5m.
             </p>
             <a href="" class="btn btn--banner">Explore Now</a>
         </div>
@@ -94,7 +94,7 @@
                 <iframe src="https://www.youtube.com/embed/GAeBmeYnOIQ?autoplay=1&mute=1" class="place__video" frameborder="0"></iframe>
                 <h4 class="place__title place__title--heading">Trải nghiệm điểm đến</h4>
                 <div class="place__list">
-                    {% for place in places %}
+                    {% for place in damVac %}
                     
                     {% if loop.index is divisibleby 2 %} 
                         <div class="place__item flex-reverse">
