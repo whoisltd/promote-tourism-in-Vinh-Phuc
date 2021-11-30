@@ -31,6 +31,7 @@ class Place(db.Model):
     image = db.Column(db.String, nullable=False)
     geom = db.Column(Geometry('POLYGON', srid=4326))
     id_tourist_area = db.Column(db.Integer, db.ForeignKey('tourist_area.id'))
+    id_post = db.Column(db.Integer, db.ForeignKey('posts.id'))
 
     def __repr__(self):
         return '<Place %r>' % (self.id)

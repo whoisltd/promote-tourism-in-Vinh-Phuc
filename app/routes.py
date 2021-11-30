@@ -21,16 +21,3 @@ da = scoped_session(sessionmaker(bind=engine))
 def index():
     return render_template("index.html")
 
-@app.route("/import-data")
-def importData():
-    f = open("posts.csv")
-    postsDataFile = csv.reader(f)
-    for title, content, image, id_tourist_area, id_place, id_review in postsDataFile:
-        post = Posts(title=title, content=content, image=image, id_tourist_area=id_tourist_area, id_place=id_place, id_review=id_review )
-        db.session.add(post)
-    db.session.commit()
-    return "oke"
-
-if __name__ == "__main__":
-    with app.app_context():
-        importData()
