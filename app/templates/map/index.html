@@ -1,11 +1,9 @@
-
-
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-crossorigin="" />
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
 <script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
@@ -14,185 +12,185 @@ crossorigin="" />
 <button id="btn" class="oke">AddToDB</button>
 
 <script>
-var map = L.map('mapid').setView([21.074637, 105.772837], 20);
-var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+    var map = L.map('mapid').setView([21.372538517232353, 105.5548151996359], 11.75);
+    var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-function iconPlace(feature, latlng) {
-    var iconCus = L.icon({
-        iconUrl: "../../static/images/icons/place-icon.png",
-        iconSize: [20, 20],
-        iconAncho: [22, 94],
-        popupAncho: [-3, -76]
-    })
-    return L.marker(latlng, { icon: iconCus })
-}
-function iconArea(feature, latlng) {
-    var iconCus = L.icon({
-        iconUrl: "../../static/images/icons/place-icon.png",
-        iconSize: [20, 20],
-        iconAncho: [22, 94],
-        popupAncho: [-3, -76]
-    })
-    return L.marker(latlng, { icon: iconCus })
-}
-function iconService(feature, latlng) {
-    var iconCus = L.icon({
-        iconUrl: "../../static/images/icons/place-icon.png",
-        iconSize: [20, 20],
-        iconAncho: [22, 94],
-        popupAncho: [-3, -76]
-    })
-    return L.marker(latlng, { icon: iconCus })
-}
-//Feature building, tree
-function placeFeature(feature, layer) {
-    feature.layer = layer;
-    if (feature.properties) {
-
-        layer.bindPopup("<b>Tên địa danh: </b>" + feature.properties.title + "<br>")
-
+    function iconPlace(feature, latlng) {
+        var iconCus = L.icon({
+            iconUrl: "../../static/images/icons/place-icon.png",
+            iconSize: [20, 20],
+            iconAncho: [22, 94],
+            popupAncho: [-3, -76]
+        })
+        return L.marker(latlng, { icon: iconCus })
     }
-}
-
-function areaFeature(feature, layer) {
-    feature.layer = layer;
-    if (feature.properties) {
-
-        layer.bindPopup("<b>Khu du lịch: </b>" + feature.properties.name + "<br>" )
+    function iconArea(feature, latlng) {
+        var iconCus = L.icon({
+            iconUrl: "../../static/images/icons/area-icon.png",
+            iconSize: [20, 20],
+            iconAncho: [22, 94],
+            popupAncho: [-3, -76]
+        })
+        return L.marker(latlng, { icon: iconCus })
     }
-}
-
-function serviceFeature(feature, layer) {
-    feature.layer = layer;
-    if (feature.properties) {
-
-        layer.bindPopup("<b>Type: </b>" + feature.properties.type + "<br>" )
+    function iconService(feature, latlng) {
+        var iconCus = L.icon({
+            iconUrl: "../../static/images/icons/services-icon.png",
+            iconSize: [20, 20],
+            iconAncho: [22, 94],
+            popupAncho: [-3, -76]
+        })
+        return L.marker(latlng, { icon: iconCus })
     }
-}
-//Layer Group
-var markersLayer = new L.LayerGroup();
+    //Feature building, tree
+    function placeFeature(feature, layer) {
+        feature.layer = layer;
+        if (feature.properties) {
 
-//Search
-// var searchTree = L.control.fuseSearch({
-//     position: 'topleft'
-// })
-// searchTree.addTo(map);
+            layer.bindPopup("<b>Tên địa danh: </b>" + feature.properties.title + "<br>")
 
-// var searchBuilding = L.control.fuseSearch()
-// searchBuilding.addTo(map);
+        }
+    }
 
-// $("#btn").click(function (e) {
+    function areaFeature(feature, layer) {
+        feature.layer = layer;
+        if (feature.properties) {
 
-// })
+            layer.bindPopup("<b>Khu du lịch: </b>" + feature.properties.name + "<br>")
+        }
+    }
+
+    function serviceFeature(feature, layer) {
+        feature.layer = layer;
+        if (feature.properties) {
+
+            layer.bindPopup("<b>Type: </b>" + feature.properties.type + "<br>")
+        }
+    }
+    //Layer Group
+    var markersLayer = new L.LayerGroup();
+
+    //Search
+    // var searchTree = L.control.fuseSearch({
+    //     position: 'topleft'
+    // })
+    // searchTree.addTo(map);
+
+    // var searchBuilding = L.control.fuseSearch()
+    // searchBuilding.addTo(map);
+
+    // $("#btn").click(function (e) {
+
+    // })
 
 
-// 
-// Get API tree, building
-function getAPI(link) {
-    var overlay = null;
-    $.ajax({
-        type: "GET",
-        datatype: "JSON",
-        url: link,
-        async: !1,
-        success: function (response) {
-            console.log(response)
-            if (link == "api/v1/places") {
+    // 
+    // Get API tree, building
+    function getAPI(link) {
+        var overlay = null;
+        $.ajax({
+            type: "GET",
+            datatype: "JSON",
+            url: link,
+            async: !1,
+            success: function (response) {
+                console.log(response)
+                if (link == "api/v1/places") {
 
-                // searchTree.indexFeatures(response.features, ['loaicay', 'chieucao', 'id']);
+                    // searchTree.indexFeatures(response.features, ['loaicay', 'chieucao', 'id']);
 
-                overlay = L.geoJSON(response, {
-                    pointToLayer: iconPlace, onEachFeature: placeFeature
-                })
-                markersLayer.addLayer(overlay)
-                // .addTo(map)
-            }
-            else if (link == "/api/v1/areas") {
-
-                // searchBuilding.indexFeatures(response.features, ['loaiNha', 'soTang', 'diaChi']);
-
-                overlay = L.geoJSON(response, {
-                    pointToLayer: iconArea, onEachFeature: areaFeature
-                })
-                markersLayer.addLayer(overlay)
-                // .addTo(map)
-            }
-            else if (link == "/api/v1/services") {
-
-                // searchBuilding.indexFeatures(response.features, ['loaiNha', 'soTang', 'diaChi']);
-
-                overlay = L.geoJSON(response, {
-                    pointToLayer: iconService, onEachFeature: serviceFeature
-                })
-                markersLayer.addLayer(overlay)
-                // .addTo(map)
+                    overlay = L.geoJSON(response, {
+                        pointToLayer: iconPlace, onEachFeature: placeFeature
+                    })
+                    markersLayer.addLayer(overlay)
+                    // .addTo(map)
                 }
-        }
-    })
-    return overlay
-}
-//layer tree, building
-var place = getAPI("/api/v1/places")
-var area = getAPI("/api/v1/areas")
-var service = getAPI("/api/v1/services")
+                else if (link == "/api/v1/areas") {
 
-console.log(place)
-//add layer to map
-map.addLayer(markersLayer)
+                    // searchBuilding.indexFeatures(response.features, ['loaiNha', 'soTang', 'diaChi']);
 
-// Control layers
-var baseLayers = {
-    "Open Street Maps": osm
-}
-var overlays = {
-    "Place": place,
-    "Area": area,
-    "Service": service
-}
+                    overlay = L.geoJSON(response, {
+                        pointToLayer: iconArea, onEachFeature: areaFeature
+                    })
+                    markersLayer.addLayer(overlay)
+                    // .addTo(map)
+                }
+                else if (link == "/api/v1/services") {
 
-L.control.layers(baseLayers, overlays).addTo(map)
+                    // searchBuilding.indexFeatures(response.features, ['loaiNha', 'soTang', 'diaChi']);
 
-//map legend
-var legend = L.control({ position: 'bottomright' })
-legend.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info')
-    div.innerHTML += '<img style="width:30px;height:30px" src="static/images/building.png">: Building<br>'
-    div.innerHTML += '<img style="width:30px;height:30px" src="static/images/tree.png">: Tree<br>'
-    return div
-}
-legend.addTo(map)
-
-//draw Item
-drawnItems = L.featureGroup().addTo(map);
-map.addControl(new L.Control.Draw({
-    edit: {
-        featureGroup: drawnItems,
-        poly: {
-            allowIntersection: false
-        }
-    },
-    draw: {
-        polygon: {
-            allowIntersection: false,
-            showArea: true
-        }
+                    overlay = L.geoJSON(response, {
+                        pointToLayer: iconService, onEachFeature: serviceFeature
+                    })
+                    markersLayer.addLayer(overlay)
+                    // .addTo(map)
+                }
+            }
+        })
+        return overlay
     }
-}));
+    //layer tree, building
+    var place = getAPI("/api/v1/places")
+    var area = getAPI("/api/v1/areas")
+    var service = getAPI("/api/v1/services")
 
-map.on('draw:created', function (event) {
-    var layer = event.layer;
-    // layer.on('click', layerClick);
-    drawnItems.addLayer(layer);
-    var geoJSON = drawnItems.toGeoJSON();
+    console.log(place)
+    //add layer to map
+    map.addLayer(markersLayer)
 
-    // $.ajax({
-    //     url: "/createNewItem",
-    //     type: "POST",
-    //     contentType: "application/json",
-    //     data: JSON.stringify(geoJSON),
-    //     success: function (data) { }
-    // });
-});
+    // Control layers
+    var baseLayers = {
+        "Open Street Maps": osm
+    }
+    var overlays = {
+        "Place": place,
+        "Area": area,
+        "Service": service
+    }
+
+    L.control.layers(baseLayers, overlays).addTo(map)
+
+    //map legend
+    var legend = L.control({ position: 'bottomright' })
+    legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info')
+        div.innerHTML += '<img style="width:30px;height:30px" src="static/images/building.png">: Building<br>'
+        div.innerHTML += '<img style="width:30px;height:30px" src="static/images/tree.png">: Tree<br>'
+        return div
+    }
+    legend.addTo(map)
+
+    //draw Item
+    drawnItems = L.featureGroup().addTo(map);
+    map.addControl(new L.Control.Draw({
+        edit: {
+            featureGroup: drawnItems,
+            poly: {
+                allowIntersection: false
+            }
+        },
+        draw: {
+            polygon: {
+                allowIntersection: false,
+                showArea: true
+            }
+        }
+    }));
+
+    map.on('draw:created', function (event) {
+        var layer = event.layer;
+        // layer.on('click', layerClick);
+        drawnItems.addLayer(layer);
+        var geoJSON = drawnItems.toGeoJSON();
+
+        // $.ajax({
+        //     url: "/createNewItem",
+        //     type: "POST",
+        //     contentType: "application/json",
+        //     data: JSON.stringify(geoJSON),
+        //     success: function (data) { }
+        // });
+    });
 </script>
