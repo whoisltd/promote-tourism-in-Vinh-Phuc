@@ -1,12 +1,11 @@
-body {
-  font-family: "Gamja Flower", cursive;
-}
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
 }
 
 img {
@@ -15,7 +14,6 @@ img {
 }
 
 .wrapper {
-  background-color: #dddddd;
   height: auto;
 }
 
@@ -171,7 +169,7 @@ img {
 .header__background .banner {
   margin-left: 150px;
   margin-top: 115px;
-  max-width: 35%;
+  max-width: 50%;
 }
 .header__background .banner__title {
   font-size: 55px;
@@ -180,11 +178,11 @@ img {
   color: white;
 }
 .header__background .banner__title span {
-  color: #dc3545;
+  color: #eec41e;
 }
 .header__background .banner__desc {
   color: white;
-  margin-top: 35px;
+  margin-top: 3px;
   font-size: 25px;
 }
 
@@ -312,5 +310,8 @@ a {
 .social__list {
   padding-left: 163px;
 }
-
+a,
+btn {
+  cursor: pointer;
+}
 /*# sourceMappingURL=style.css.map */
