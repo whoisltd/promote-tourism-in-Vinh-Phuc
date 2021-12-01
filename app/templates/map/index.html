@@ -8,9 +8,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
 <script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
 
-<div id="mapid" style="width: 1050px; height: 500px;"></div>
+<div id="mapid"></div>
 <button id="btn" class="oke">AddToDB</button>
-
+<link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
 <script>
     var map = L.map('mapid').setView([21.372538517232353, 105.5548151996359], 11.75);
     var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -156,8 +156,9 @@
     var legend = L.control({ position: 'bottomright' })
     legend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'info')
-        div.innerHTML += '<img style="width:30px;height:30px" src="static/images/building.png">: Building<br>'
-        div.innerHTML += '<img style="width:30px;height:30px" src="static/images/tree.png">: Tree<br>'
+        div.innerHTML += '<img style="width:30px;height:30px" src="../../static/images/icons/place-icon.png">: Place<br>'
+        div.innerHTML += '<img style="width:30px;height:30px" src="../../static/images/icons/services-icon.png">: Service<br>'
+        div.innerHTML += '<img style="width:30px;height:30px" src="../../static/images/icons/area-icon.png">: Area<br>'
         return div
     }
     legend.addTo(map)
