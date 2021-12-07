@@ -1380,6 +1380,7 @@ a[class*="card"]:hover .title {
   z-index: 99;
   transition: all 0.3s ease-out 0s;
   position: relative;
+  background: aliceblue;
 }
 
 .servicesPage-header_navbar-wrap {
