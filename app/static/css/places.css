@@ -7,7 +7,7 @@
   --primary-spacing: 150%;
 }
 
-.header__background::after {
+/* .header__background::after {
   position: absolute;
   content: "";
   background-color: rgba(56, 66, 77, 0.24);
@@ -15,7 +15,7 @@
   height: 100%;
   left: 0;
   top: 0;
-}
+} */
 
 .placePage-header_navbar {
   height: 86px;
@@ -53,7 +53,7 @@
 
 .placePage-header_menu-link {
   text-decoration: none !important;
-  color: var(--primary-color);
+  color: rgb(19, 15, 64);
   font-style: var(--primary-fontSize);
   font-weight: var(--primary-fontWeight);
   letter-spacing: var(--primary-spacing);
