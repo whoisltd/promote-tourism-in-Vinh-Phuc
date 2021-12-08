@@ -1,12 +1,12 @@
-body {
-  font-family: "Gamja Flower", cursive;
-}
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  transition: 0.25s;
+}
+body {
+  font-family: "Poppins", sans-serif;
 }
 
 img {
@@ -15,7 +15,6 @@ img {
 }
 
 .wrapper {
-  background-color: #dddddd;
   height: auto;
 }
 
@@ -35,7 +34,7 @@ img {
   text-align: center;
   text-align: center;
   padding-top: 30px;
-  color: #b2910e;
+  color: rgb(230, 126, 34);
 }
 .place__video {
   width: 100%;
@@ -63,12 +62,13 @@ img {
 .place__title--heading {
   text-transform: uppercase;
   margin-top: 106px;
-  margin-bottom: 80px;
-  color: #b2910e;
+  margin-bottom: 5px;
+  color: rgb(230, 126, 34);
 }
 .place__title--item {
   margin-bottom: 11px;
   color: #212529;
+  text-transform: capitalize;
 }
 .place__list {
   display: flex;
@@ -103,20 +103,36 @@ img {
 
 .btn {
   display: inline-block;
-  padding: 10px 30px;
-  background-color: #dc3545;
-  border-radius: 4px;
-  color: white;
-  text-transform: uppercase;
-  text-decoration: none;
+  margin-top: 10px;
+  cursor: pointer;
+  color: rgb(19, 15, 64);
+  font-size: 17px;
+  z-index: 0;
+  position: relative;
+  border-radius: 0px 50px 50px;
+  border: 2px solid rgb(19, 15, 64);
+  border-image: initial;
+  background: none;
+  overflow: hidden;
   font-weight: 500;
-  margin-top: 40px;
 }
 .btn:hover {
-  background-color: transparent;
-  border: 1px solid #dc3545;
-  color: #dc3545;
-  transition: 0.25s;
+  color: white;
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  clip-path: circle(0% at 0% 5%);
+  background: rgb(19, 15, 64);
+  transition: all 0.2s linear 0s;
+}
+.btn:hover::before {
+  clip-path: circle(100%);
 }
 
 .flex-reverse {
@@ -153,7 +169,7 @@ img {
   margin-right: 100px;
 }
 .header__top .navbar__item a {
-  color: white;
+  color: rgb(19, 15, 64);
   text-transform: uppercase;
 }
 .header__top .logo {
@@ -169,9 +185,11 @@ img {
   height: 100%;
 }
 .header__background .banner {
-  margin-left: 150px;
-  margin-top: 115px;
-  max-width: 35%;
+  position: absolute;
+  right: 240px;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 50%;
 }
 .header__background .banner__title {
   font-size: 55px;
@@ -179,33 +197,40 @@ img {
   font-weight: 700;
   color: white;
 }
+.btn--banner {
+  padding: 10px 30px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.img--bottom {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 120px;
+}
 .header__background .banner__title span {
-  color: #dc3545;
+  color: #eec41e;
 }
 .header__background .banner__desc {
   color: white;
-  margin-top: 35px;
+  margin-top: 3px;
   font-size: 25px;
 }
 
 a {
   text-decoration: none;
 }
-
-.btn--banner {
-  padding: 15px 30px;
-  border-radius: 4px;
-  text-transform: uppercase;
-  background-color: #dc3545;
-  color: white;
+.tip {
+  background-color: white;
+  /* margin-top: 150px; */
 }
-
 .tip__title {
   font-size: 40px;
   font-weight: 500;
   line-height: 48px;
   text-align: center;
-  color: #b2910e;
+  color: rgb(230, 126, 34);
   text-transform: uppercase;
 }
 
@@ -245,7 +270,7 @@ a {
   text-transform: uppercase;
   margin-top: 30px;
 }
-
+/* 
 .footer {
   padding-bottom: 20px;
   margin-top: 50px;
@@ -311,6 +336,65 @@ a {
 
 .social__list {
   padding-left: 163px;
+} */
+a,
+btn {
+  cursor: pointer;
+}
+/*# sourceMappingURL=style.css.map */
+.placePage-header_navbar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 1000;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0.5rem 1.5rem;
+  background-color: white;
+  color: rgb(19, 15, 64);
+  transform: translateY(-100px);
+}
+.active--navbar {
+  transform: translateY(0px);
 }
 
-/*# sourceMappingURL=style.css.map */
+.footer {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  background-size: center;
+  background-position: center;
+  text-transform: capitalize;
+}
+.footer img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100px;
+  width: 100%;
+}
+.footer .share {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+.footer .share .btn {
+  color: #fff;
+  border-color: #fff;
+  margin-top: 100px;
+}
+.footer .share .btn:hover {
+  color: #130f40;
+}
+.footer .share .btn::before {
+  background: #fff;
+}
+.footer .credit {
+  font-size: 20px;
+  font-weight: 400;
+  color: white;
+  text-align: center;
+  margin-top: 50px;
+}
+.footer .credit span {
+  color: #e67e22;
+}

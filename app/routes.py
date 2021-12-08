@@ -20,4 +20,3 @@ da = scoped_session(sessionmaker(bind=engine))
 def index():
     return render_template("index.html")
 
-
