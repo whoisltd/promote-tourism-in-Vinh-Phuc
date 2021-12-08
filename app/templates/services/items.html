@@ -15,10 +15,10 @@ justify-content-center
                             <a href="#" class="title">{{ service.name }}</a>
                             <div class="price-wrap mt-2">
                                 <span class="text-truncate">{{ service.description }}</span>
-                                <del class="price-old">$1980</del>
+                                <!-- <del class="price-old">$1980</del> -->
                             </div> <!-- price-wrap.// -->
                         </div>
-                        <a href="#" class="btn btn-block btn-primary">More info</a>
+                        <a href="{{ url_for('services_detail', id=service.id) }}" class="btn btn-block btn-primary">More info</a>
                     </figcaption>
                 </figure>
             </div> <!-- col.// -->
