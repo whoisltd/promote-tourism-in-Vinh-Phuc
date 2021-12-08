@@ -10,4 +10,4 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 
-from app import routes, services, posts, models, places, admin
+from app import routes, services, posts, models, places, admin, map, upload_geom, api
