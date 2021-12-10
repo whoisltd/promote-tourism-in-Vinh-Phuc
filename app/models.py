@@ -15,7 +15,7 @@ class Tourist_area(db.Model):
     name = db.Column(db.String, index=True, unique=True)
     description = db.Column(db.String)
     image = db.Column(db.String, nullable=False)
-    geom = db.Column(Geometry('POLYGON', srid=4326))
+    geom = db.Column(Geometry('POINT', srid=4326))
     posts = db.relationship('Posts', backref='tourist_area', lazy='dynamic')
     services = db.relationship('Services', backref= 'tourist_area', lazy= 'dynamic')
     place = db.relationship('Place', backref = 'tourist_area', lazy= 'dynamic')
@@ -23,13 +23,14 @@ class Tourist_area(db.Model):
     def __repr__(self):
         return (self.name)
 
+    
 class Place(db.Model):
     __tablename__ = 'place'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.Text, nullable=False)
     image = db.Column(db.String, nullable=False)
-    geom = db.Column(Geometry('POLYGON', srid=4326))
+    geom = db.Column(Geometry('POINT', srid=4326))
     id_tourist_area = db.Column(db.Integer, db.ForeignKey('tourist_area.id'))
     id_post = db.Column(db.Integer, db.ForeignKey('posts.id'))
 
@@ -72,6 +73,7 @@ class Services(db.Model):
     phone = db.Column(db.String, nullable=False)
     email = db.Column(db.String, nullable=False)
     address = db.Column(db.String, nullable=False)
+    geom = db.Column(Geometry('POINT', srid=4326))
     id_tourist_area = db.Column(db.Integer, db.ForeignKey('tourist_area.id'))
     type = db.Column(db.String, nullable=False)
     # Many to Many
