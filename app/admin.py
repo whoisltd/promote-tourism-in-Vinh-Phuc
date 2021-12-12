@@ -11,7 +11,7 @@ class MyView(BaseView):
         return self.render('layout.html')
 
 admin = Admin(app=app, name= "VPhuc Travel", template_mode="bootstrap3")
-admin.add_view(ModelView(Posts, db.session))
+admin.add_view(PostsView(Posts, db.session))
 admin.add_view(ModelView(Services, db.session))
 admin.add_view(ModelView(Place, db.session))   
 

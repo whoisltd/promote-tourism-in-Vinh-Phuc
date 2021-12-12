@@ -5,8 +5,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
 
 
+<<<<<<< HEAD
 <link rel="stylesheet" href="/static/plugins/easy-button/easy-button.css">
 <script src="/static/plugins/easy-button/easy-button.js"></script> 
+=======
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+<script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+>>>>>>> d0b83e948fee689918ccb9aa7c0d1c0becc646a9
 
 <link rel="stylesheet" href="/static/plugins/leaflet-locatecontrol-0.76.0/dist/L.Control.Locate.min.css" />
 <script src="/static/plugins/leaflet-locatecontrol-0.76.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
@@ -141,13 +147,13 @@
                 $(".thisIsStartPoint").click(function() {
                     var a = parseFloat($(this).attr('data-lat'));
                     var b = parseFloat($(this).attr('data-lng'));
-                    var c = [a,b];
+                    var c = [a, b];
                     control.spliceWaypoints(0, 1, c);
                 })
-                $(".thisIsEndPoint").click(function() {
+                $(".thisIsEndPoint").click(function () {
                     var a = parseFloat($(this).attr('data-lat'));
                     var b = parseFloat($(this).attr('data-lng'));
-                    var c = [a,b];
+                    var c = [a, b];
                     control.spliceWaypoints(1, 1, c);
                 })
 
@@ -225,7 +231,7 @@
     console.log(place)
     //add layer to map
     map.addLayer(markersLayer)
-   
+
     // Control layers
     var baseLayers = {
         "Open Street Maps": osm
@@ -238,7 +244,7 @@
 
     L.control.layers(baseLayers, overlays).addTo(map)
 
-    
+
     //Control routing
     var rlayer = null;
     var check = true;
@@ -257,17 +263,18 @@
     map.addControl(control)
 
     L.easyButton('fa-level-up',
-    function () {
-        console.log(check + "okeee")
-        if (control._map) {
-            // check = false
-            map.removeControl(control)
-        }
-        else{
-            // check = true
-            map.addControl(control)
-        }
-    }).addTo(map);
+        function () {
+            console.log(check + "okeee")
+            if (control._map) {
+                // check = false
+                map.removeControl(control)
+            }
+            else {
+                // check = true
+                map.addControl(control)
+            }
+        }).addTo(map);
+
 
     // L.Routing.errorControl(control).addTo(map);
 

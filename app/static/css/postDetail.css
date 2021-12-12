@@ -1,0 +1,41 @@
+.postDetail__container {
+  padding-top: 130px;
+  padding-bottom: 130px;
+}
+
+.postDetail__wrap {
+  max-width: 1140px;
+}
+.postDetail__img {
+  height: 500px;
+}
+.postDetail__img > img {
+  width: 90%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top-right-radius: 220px;
+}
+
+.postDetail__content {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.postDetail__title {
+  font-size: 44px;
+  font-weight: 600;
+  color: #38424d;
+  margin: 0px;
+  line-height: 1.2;
+}
+.postDetail__text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #747e88;
+  margin-top: 20px;
+}
