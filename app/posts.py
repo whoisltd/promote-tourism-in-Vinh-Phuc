@@ -32,3 +32,7 @@ def posts1():
     pagination = Pagination(page=page,per_page=per_page, total=len(posts), search=False, record_name='posts')
     return render_template('posts/items.html', posts=posts[i:i+per_page], pagination=pagination)
 
+@app.route('/posts/<int:id>', methods=['GET', 'POST'])
+def postDetail(id):
+    postIds = Posts.query.filter(Posts.id==id)
+    return render_template('posts/postDetail.html', postIds=postIds)

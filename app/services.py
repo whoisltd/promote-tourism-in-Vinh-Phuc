@@ -43,3 +43,7 @@ def services1():
     pagination = Pagination(page=page,per_page=per_page, total=len(services), search=False, record_name='services')
     return render_template('services/items.html', services=services[i:i+per_page], pagination=pagination)
 
+@app.route('/services/<int:id>', methods=['GET', 'POST'])
+def services_detail(id):
+    service = Services.query.get(id)
+    return render_template('services/details.html', service=service, id=id)

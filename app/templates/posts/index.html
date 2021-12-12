@@ -31,7 +31,8 @@
 
 <body>
 
-	{% include 'header.html' %}<!-- section-header.// -->
+	{% include 'header.html' %}
+	<!-- section-header.// -->
 	<!-- ========================= SECTION CONTENT ========================= -->
 	<section class="section-content padding-y">
 		<div class="container">
@@ -58,7 +59,8 @@
 								<div class="card-body">
 									{% for area in areas %}
 									<label class="custom-control custom-checkbox">
-										<input type="checkbox" checked="" class="custom-control-input areas" value="{{ area.id }}">
+										<input type="checkbox" checked="" class="custom-control-input areas"
+											value="{{ area.id }}">
 										<div class="custom-control-label">
 											{{ area.name }}
 										</div>
@@ -66,7 +68,7 @@
 									{% endfor %}
 								</div> <!-- card-body.// -->
 							</div>
-						</article> 
+						</article>
 					</div><!-- card.// -->
 				</aside> <!-- col.// -->
 				<main class="col-md-9">
@@ -89,9 +91,9 @@
 							</div>
 						</div>
 					</header><!-- sect-heading -->
-				<div id="testttt">
-					{% include 'posts/items.html' %}
-				</div>
+					<div id="testttt">
+						{% include 'posts/items.html' %}
+					</div>
 			</div>
 			</main> <!-- col.// -->
 		</div>

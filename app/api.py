@@ -178,3 +178,36 @@ def services_api():
     return jsonify({
         "features": services_feature
     })
+
+@app.route("/api/v1/services/<int:id>")
+def service_api(id):
+    service = db.session.query(Services.id, Services.name, Services.description,
+                              Services.image, Services.phone, Services.email, 
+                              Services.address, Services.id_tourist_area, Services.type,
+                              func.ST_AsGeoJSON(func.ST_Transform(Services.geom, 4326)).label('geometry')).filter_by(id = id).first()
+    services_feature = []
+    properties_temp = {
+        "id": service.id,
+        "name": service.name,
+        "description": service.description,
+        "image": service.image,
+        "phone": service.phone,
+        "email": service.email,
+        "address": service.address,
+        "type": service.type,
+        "id_tourist_area": service.id_tourist_area,
+    }
+    if service.geometry is not None:
+        geometry_temp = json.loads(service.geometry)
+    else:
+        geometry_temp = ""
+    feature = {
+        "type": "Feature",
+        "properties": properties_temp,
+        "geometry": geometry_temp
+    }
+    services_feature.append(feature)
+
+    return jsonify({
+        "features": services_feature
+    })
