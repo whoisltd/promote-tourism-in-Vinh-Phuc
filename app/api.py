@@ -51,6 +51,7 @@ def areas_api():
             geometry_temp = ""
         feature = {
             "type": "Feature",
+            "typeFeature": "Area",
             "properties": properties_temp,
             "geometry": geometry_temp
         }
@@ -108,6 +109,7 @@ def places_api():
             geometry_temp = ""
         feature = {
             "type": "Feature",
+            "typeFeature": "Place",
             "properties": properties_temp,
             "geometry": geometry_temp
         }
@@ -170,6 +172,7 @@ def services_api():
             geometry_temp = ""
         feature = {
             "type": "Feature",
+            "typeFeature": "Service",
             "properties": properties_temp,
             "geometry": geometry_temp
         }
