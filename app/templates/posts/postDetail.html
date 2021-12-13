@@ -1,0 +1,51 @@
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="max-age=604800" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Posts detail</title>
+
+<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+<!-- jQuery -->
+<script src="{{ url_for('static', filename='js/jquery-2.0.0.min.js') }}" type="text/javascript"></script>
+
+<!-- Bootstrap4 files-->
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
+<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+
+<!-- Font awesome 5 -->
+<link href="{{ url_for('static', filename='fonts/fontawesome/css/all.min.css') }}" type="text/css" rel="stylesheet">
+
+
+<!-- custom style -->
+<link href="{{ url_for('static', filename='css/ui.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ url_for('static', filename='css/responsive.css') }}" rel="stylesheet"
+    media="only screen and (max-width: 1200px)" />
+
+<link href="{{ url_for('static', filename='css/postDetail.css') }}" rel="stylesheet" type="text/css" />
+
+<!-- custom javascript -->
+<script src="{{ url_for('static', filename='js/script.js') }}" type="text/javascript"></script>
+
+
+</head>
+
+<body>
+    {% include 'header.html' %}
+    <div class="postDetail__container container">
+        {%for postId in postIds%}
+        <div class="postDetail__wrap row">
+            <div class="col-6 postDetail__img">
+                <img src="{{ url_for('static', filename=postId.image) }}">
+            </div>
+            <div class="col-6 postDetail__content">
+                <h3 class="postDetail__title">{{postId.title}}</h3>
+                <p class="postDetail__text">{{postId.content}}</p>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</body>
+
+</html>

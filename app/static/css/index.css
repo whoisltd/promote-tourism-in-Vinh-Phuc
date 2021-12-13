@@ -279,7 +279,7 @@ body {
 }
 .footer_wrap {
   padding-top: 80px;
-  padding-bottom: 130px;
+  padding-bottom: 50px;
 }
 .footer_about {
   margin-top: 50px;
@@ -301,4 +301,21 @@ body {
 .social {
   list-style: none;
   display: flex;
+}
+
+.footer_title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+}
+.footer_about-menu {
+  padding-top: 17px;
+  margin: 0px;
+  list-style-type: none;
+}
+.footer_about-menu > li {
+  height: 34px;
+}
+.footer_about-menu > li:hover {
+  color: #eec41e;
 }

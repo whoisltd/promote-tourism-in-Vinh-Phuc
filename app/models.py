@@ -1,6 +1,10 @@
+from sqlalchemy.orm import backref
 from app import db
 from datetime import datetime
 from geoalchemy2.types import Geometry
+
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 
 # from app import login
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -12,6 +16,14 @@ class Tourist_area(db.Model):
     description = db.Column(db.String)
     image = db.Column(db.String, nullable=False)
     geom = db.Column(Geometry('POINT', srid=4326))
+    posts = db.relationship('Posts', backref='tourist_area', lazy='dynamic')
+    services = db.relationship('Services', backref= 'tourist_area', lazy= 'dynamic')
+    place = db.relationship('Place', backref = 'tourist_area', lazy= 'dynamic')
+
+    def __repr__(self):
+        return (self.name)
+
+    
 class Place(db.Model):
     __tablename__ = 'place'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -21,6 +33,10 @@ class Place(db.Model):
     geom = db.Column(Geometry('POINT', srid=4326))
     id_tourist_area = db.Column(db.Integer, db.ForeignKey('tourist_area.id'))
     id_post = db.Column(db.Integer, db.ForeignKey('posts.id'))
+
+    def __repr__(self):
+        return '<Place %r>' % (self.id)
+
 class Posts(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -29,7 +45,13 @@ class Posts(db.Model):
     image = db.Column(db.String, nullable=False)
     id_tourist_area = db.Column(db.Integer, db.ForeignKey('tourist_area.id'))
     id_place = db.Column(db.Integer, db.ForeignKey('place.id'))
-    id_review = db.Column(db.Integer, db.ForeignKey('reviews.id'))
+
+    def __repr__(self):
+        return '<Posts %r>' % (self.id)
+
+class PostsView(ModelView):
+    form__columns = [ 'id', 'title', 'content', 'image', 'area' ]
+
 
 class Reviews(db.Model):
     __tablename__ = 'reviews'
@@ -56,6 +78,9 @@ class Services(db.Model):
     type = db.Column(db.String, nullable=False)
     # Many to Many
     # place = db.relationship('places', backref='services', lazy=True)
+
+    def __repr__(self):
+        return '<Services %r>' % (self.id)
 
 class Users(db.Model):
     __tablename__ = 'users'
