@@ -2,6 +2,8 @@
 
 Web gis promote tourism in Vinh Phuc province
 
+View demo in [here](https://promote-tourism.herokuapp.com/)
+
 ## Authors
 
 - [@Dat Le](https://www.github.com/WhoIsLTD)
