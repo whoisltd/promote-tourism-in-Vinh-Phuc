@@ -47,8 +47,8 @@ class Posts(db.Model):
     def __repr__(self):
         return '<Posts %r>' % (self.id)
 
-class PostsView(ModelView):
-    form__columns = [ 'id', 'title', 'content', 'image', 'area' ]
+# class PostsView(ModelView):
+#     form__columns = [ 'id', 'title', 'content', 'image', 'area' ]
 
 
 class Reviews(db.Model):
@@ -113,9 +113,9 @@ class Admin(Users):
         'polymorphic_identity': 'admin'
     }
 
-@login.user_loader
-def load_user(id):
-    return User.query.get(int(id))
+# @login.user_loader
+# def load_user(id):
+#     return User.query.get(int(id))
 
 # @login.user_loader
 # def load_user(id):
