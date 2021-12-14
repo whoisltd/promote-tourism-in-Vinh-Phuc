@@ -44,3 +44,4 @@ def createNewItem():
         db.session.add(place)
     db.session.commit()
     return redirect(url_for('index'))
+

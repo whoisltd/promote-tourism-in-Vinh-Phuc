@@ -115,7 +115,8 @@
                                     {{ place.description }}
                                     <span class="moreText"></span>
                                 </p>
-                                <a href="{{url_for('postDetail', id=place.id_post )}}" class="btn desc" target="_blank">Chi tiết</a>
+                                <a href="{{url_for('postDetail', id=place.id_post)}}" class="btn desc">Chi
+                                    tiết</a>
                             </div>
                             <div class="slide">
                                 <div class="slide__item">
@@ -132,11 +133,11 @@
             </div>
         </div>
     </div>
-    
+
     <section class="footer">
 
         <img src="{{ url_for('static', filename='images/places/top_wave.png') }}" alt="">
-    
+
         <div class="share">
             <a href="#" class="btn"> <i class="fab fa-facebook-f"></i> facebook </a>
             <a href="#" class="btn"> <i class="fab fa-twitter"></i> twitter </a>
@@ -144,7 +145,7 @@
             <a href="#" class="btn"> <i class="fab fa-linkedin"></i> linkedin </a>
             <a href="#" class="btn"> <i class="fab fa-pinterest"></i> pinterest </a>
         </div>
-    
+
         <div class="credit"> created by <span>5 ae siêu nhân</span> | all rights reserved! </div>
 
         <script src="{{ url_for('static', filename='js/places/places.js') }}"></script>

@@ -3,8 +3,6 @@ from app import db
 from datetime import datetime
 from geoalchemy2.types import Geometry
 
-from flask_admin import Admin
-from flask_admin.contrib.sqla import ModelView
 
 # from app import login
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -114,6 +112,10 @@ class Admin(Users):
     __mapper_args__ = {
         'polymorphic_identity': 'admin'
     }
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
 # @login.user_loader
 # def load_user(id):
