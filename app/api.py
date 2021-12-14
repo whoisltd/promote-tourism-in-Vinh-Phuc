@@ -97,7 +97,7 @@ def places_api():
     for place in places:
         properties_temp = {
             "id": place.id,
-            "title": place.title,
+            "name": place.title,
             "description": place.description,
             "image": place.image,
             "id_tourist_area": place.id_tourist_area,

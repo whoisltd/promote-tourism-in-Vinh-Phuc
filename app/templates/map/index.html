@@ -18,25 +18,15 @@
 
 <script src="/static/plugins/control-geocoder/Control.Geocoder.js"></script>
 
+<script src="/static/plugins/leaflet-search-3.0.2/dist/leaflet-search.min.js"></script>
+<link rel="stylesheet" href="/static/plugins/leaflet-search-3.0.2/dist/leaflet-search.min.css">
+
 <script src="/static/js/jquery-3.6.0.min.js"></script>
-
-
 
 <div id="mapid"></div>
 
 <link rel="stylesheet" href="/static/css/map.css">
-<!-- <style>
-    .results {
-        background-color: white;
-        opacity: 0.8;
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        width: 320px;
-        height: 480px;
-        overflow-y: scroll;
-    }
-    </style> -->
+
 <script>
 
     var map = L.map('mapid').setView([21.372538517232353, 105.5548151996359], 11.75);
@@ -83,17 +73,10 @@
             iconUrl: "../../static/images/icons/" + icontype + ".png",
             iconSize: [35, 35],
             iconAnchor: [12, 41],
-            popupAnchor: [1, -34],
+            popupAnchor: [5, -34],
             shadowSize: [41, 41]
         })
         return L.marker(latlng, { icon: iconCus })
-    }
-
-    function getAddress(latlng){
-        console.log(latlng)
-        var geocoder = $.getJSON('https://nominatim.openstreetmap.org/reverse?format=json&lat='+latlng[0]+'&lon='+latlng[1]+'&zoom=18&addressdetails=1', function (data) {
-            return data.display_name
-        })
     }
 //     $.get('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=47.217954&lon=-1.552918', function(data){
 //     console.log(data.address.road);
@@ -102,11 +85,25 @@
     function placeFeature(feature, layer) {
         feature.layer = layer;
         if (feature.properties) {
-            console.log(feature.properties.coordinates)
-            layer.bindPopup("<b>Tên địa danh: </b>" + feature.properties.title + "<br>"
-            // + "<b>Địa chỉ: </b>" + getAddress(feature.properties.coordinates) + "<br>"
-            + "<b>Hình ảnh: </b>" + "<img src='" + feature.properties.image + "' width='100px' height='100px'>" + "<br>"
-            )
+            layer.bindPopup("<b>Tên địa danh: </b>" + feature.properties.name + "<br>"
+            + "<b>Hình ảnh: </b>" + "<img src='static/" + feature.properties.image + "' width='100px' height='100px'>" + "<br>"
+            + '<button class="thisIsStartPoint" data-lat="'+ feature.geometry.coordinates[1] +'" data-lng="'+ feature.geometry.coordinates[0]+'">Use this as start point</button>' + "<br>"
+            + '<button class="thisIsEndPoint" data-lat="'+ feature.geometry.coordinates[1] +'" data-lng="'+ feature.geometry.coordinates[0]+'">Use this as end point</button>' + "<br>"
+            ).on("popupopen", function() {
+                $(".thisIsStartPoint").click(function() {
+                    var a = parseFloat($(this).attr('data-lat'));
+                    var b = parseFloat($(this).attr('data-lng'));
+                    var c = [a, b];
+                    control.spliceWaypoints(0, 1, c);
+                })
+                $(".thisIsEndPoint").click(function () {
+                    var a = parseFloat($(this).attr('data-lat'));
+                    var b = parseFloat($(this).attr('data-lng'));
+                    var c = [a, b];
+                    control.spliceWaypoints(1, 1, c);
+                })
+
+            })
 
         }
     }
@@ -114,10 +111,24 @@
     function areaFeature(feature, layer) {
         feature.layer = layer;
         if (feature.properties) {
-            console.log(feature.geometry.coordinates)
-
             layer.bindPopup("<b>Khu du lịch: </b>" + feature.properties.name + "<br>"
-            + "<b>Địa chỉ: </b>" + getAddress(feature.geometry.coordinates) + "<br>")
+            + '<button class="thisIsStartPoint" data-lat="'+ feature.geometry.coordinates[1] +'" data-lng="'+ feature.geometry.coordinates[0]+'">Use this as start point</button>' + "<br>"
+            + '<button class="thisIsEndPoint" data-lat="'+ feature.geometry.coordinates[1] +'" data-lng="'+ feature.geometry.coordinates[0]+'">Use this as end point</button>' + "<br>"
+            ).on("popupopen", function() {
+                $(".thisIsStartPoint").click(function() {
+                    var a = parseFloat($(this).attr('data-lat'));
+                    var b = parseFloat($(this).attr('data-lng'));
+                    var c = [a, b];
+                    control.spliceWaypoints(0, 1, c);
+                })
+                $(".thisIsEndPoint").click(function () {
+                    var a = parseFloat($(this).attr('data-lat'));
+                    var b = parseFloat($(this).attr('data-lng'));
+                    var c = [a, b];
+                    control.spliceWaypoints(1, 1, c);
+                })
+
+            })
         }
     }
 
@@ -157,21 +168,6 @@
     //Layer Group
     var markersLayer = new L.LayerGroup();
 
-    //Search
-    // var searchTree = L.control.fuseSearch({
-    //     position: 'topleft'
-    // })
-    // searchTree.addTo(map);
-
-    // var searchBuilding = L.control.fuseSearch()
-    // searchBuilding.addTo(map);
-
-    // $("#btn").click(function (e) {
-
-    // })
-
-
-    // 
     // Get API tree, building
     function getAPI(link) {
         var overlay = null;
@@ -183,28 +179,18 @@
             success: function (response) {
                 console.log(response)
                 if (link == "/api/v1/places") {
-
-                    // searchTree.indexFeatures(response.features, ['loaicay', 'chieucao', 'id']);
-
                     overlay = L.geoJSON(response, {
                         pointToLayer: iconLocation, onEachFeature: placeFeature
                     })
                     markersLayer.addLayer(overlay)
-                    // .addTo(map)
                 }
                 else if (link == "/api/v1/areas") {
-
-                    // searchBuilding.indexFeatures(response.features, ['loaiNha', 'soTang', 'diaChi']);
-
                     overlay = L.geoJSON(response, {
                         pointToLayer: iconLocation, onEachFeature: areaFeature
                     })
                     markersLayer.addLayer(overlay)
                 }
                 else if (link == "/api/v1/services") {
-
-                    // searchBuilding.indexFeatures(response.features, ['loaiNha', 'soTang', 'diaChi']);
-
                     overlay = L.geoJSON(response, {
                         pointToLayer: iconLocation, onEachFeature: serviceFeature
                     })
@@ -234,11 +220,54 @@
     }
 
     L.control.layers(baseLayers, overlays).addTo(map)
+//search
+var selector = L.control({
+        position: 'topright'
+    });
+
+    selector.onAdd = function(map) {
+        var div = L.DomUtil.create('div', 'mySelector');
+        div.innerHTML = '<input id = "opt" type="text" list="marker_select" /><datalist id="marker_select"><option value="init"></option></datalist>';
+        // <select id="marker_select"><option value="init">(select item)</option></select>';
+        return div;
+    };
+
+    selector.addTo(map);
+// console.log(markersLayer)
+    var markers = markersLayer.getLayers();
+    // console.log(markers)
+    function markerLayer(i){
+        markers[i].eachLayer(function(layer) {
+            var optionElement = document.createElement("option");
+            optionElement.setAttribute("data-value", layer._leaflet_id);
+            optionElement.value = layer.feature.properties.name;
+            L.DomUtil.get("marker_select").appendChild(optionElement);
+        });
+        var marker_select = L.DomUtil.get("opt");
+        console.log(marker_select)
+        L.DomEvent.addListener(marker_select, 'click', function(e) {
+            L.DomEvent.stopPropagation(e);
+        });
+
+        L.DomEvent.addListener(marker_select, 'change', changeHandler);
+
+        function changeHandler(e) {
+            // console.log(e.target)
+            var valOption = $('option[value="'+e.target.value+'"]').data('value');
+            // console.log(valOption)
+            if (e.target.value == "init") {
+                map.closePopup();
+            } else {
+                markers[i].getLayer(valOption).openPopup();
+            }
+        }
+    }
+    for (var i = 0; i < markers.length; i++) {
+        markerLayer(i);
+    }
 
 
     //Control routing
-    var rlayer = null;
-    var check = true;
 
     var control = L.Routing.control({
         router: L.Routing.osrmv1({
@@ -254,8 +283,7 @@
     // map.addControl(control)
 
     L.easyButton('fa-level-up',
-        function () {
-            console.log(check + "okeee")
+        function () {  
             if (control._map) {
                 // check = false
                 map.removeControl(control)
@@ -419,20 +447,5 @@
             }
             drawnItems.addLayer(layer);
         });
-    // map.on('draw:created', function (event) {
-    //     var layer = event.layer;
-    //     // layer.on('click', layerClick);
-    //     drawnItems.addLayer(layer);
-
-    //     // var geoJSON = drawnItems.toGeoJSON();
-
-    //     // $.ajax({
-    //     //     url: "/createNewItem",
-    //     //     type: "POST",
-    //     //     contentType: "application/json",
-    //     //     data: JSON.stringify(geoJSON),
-    //     //     success: function (data) { }
-    //     // });
-    // });
 
 </script>
