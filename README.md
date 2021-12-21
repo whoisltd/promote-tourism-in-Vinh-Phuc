@@ -40,6 +40,8 @@ View demo in [here](https://promote-tourism.herokuapp.com/)
 | :-------- | :------- | :-------------------------------------  |
 | `id`      | `int`    | **Required**. Id of an service to fetch |
 
+## Environment Variables
+
 To run this project, you will need to add the following environment variables to your .env file
 
 `SECRET_KEY`
