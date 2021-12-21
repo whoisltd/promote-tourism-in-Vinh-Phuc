@@ -10,8 +10,11 @@ class MyView(BaseView):
     def index(self):
         return self.render('layout.html')
 
-admin = Admin(app=app, name= "VPhuc Travel", template_mode="bootstrap3")
-admin.add_view(ModelView(Posts, db.session))
-admin.add_view(ModelView(Services, db.session))
-admin.add_view(ModelView(Place, db.session))   
+admin = Admin(app=app, name= "VPhuc Travel", template_mode="bootstrap4")
+admin.add_view(ModelView(Tourist_area,db.session))
+admin.add_view(ModelView(Place, db.session))
+admin.add_view(ModelView(Services, db.session)) 
+admin.add_view(PostsView(Posts, db.session))
+
+
 
