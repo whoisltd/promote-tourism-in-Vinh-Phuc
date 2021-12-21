@@ -38,7 +38,7 @@
         position: 'topleft',
         strings: {
             title: "My location",
-            popup: 'You are here<br><button id="useToStart">use this as start point</button><br><button id="useToEnd">use as end point</button>',
+            popup: 'You are here<br><button id="useToStart">use this as start point</button><br><button id="useToEnd">use this as end point</button>',
         },
     }).addTo(map);
 
@@ -82,6 +82,15 @@
 //     console.log(data.address.road);
 // });
     //Feature 
+    function choosePoint(name, num1, num2){
+        $(name).click(function(){
+            var a = parseFloat($(this).attr('data-lat'));
+            var b = parseFloat($(this).attr('data-lng'));
+            var c = [a, b];
+            control.spliceWaypoints(num1, num2, c);
+        })
+    }
+
     function placeFeature(feature, layer) {
         feature.layer = layer;
         if (feature.properties) {
@@ -90,18 +99,8 @@
             + '<button class="thisIsStartPoint" data-lat="'+ feature.geometry.coordinates[1] +'" data-lng="'+ feature.geometry.coordinates[0]+'">Use this as start point</button>' + "<br>"
             + '<button class="thisIsEndPoint" data-lat="'+ feature.geometry.coordinates[1] +'" data-lng="'+ feature.geometry.coordinates[0]+'">Use this as end point</button>' + "<br>"
             ).on("popupopen", function() {
-                $(".thisIsStartPoint").click(function() {
-                    var a = parseFloat($(this).attr('data-lat'));
-                    var b = parseFloat($(this).attr('data-lng'));
-                    var c = [a, b];
-                    control.spliceWaypoints(0, 1, c);
-                })
-                $(".thisIsEndPoint").click(function () {
-                    var a = parseFloat($(this).attr('data-lat'));
-                    var b = parseFloat($(this).attr('data-lng'));
-                    var c = [a, b];
-                    control.spliceWaypoints(1, 1, c);
-                })
+                choosePoint('.thisIsStartPoint', 0, 1);
+                choosePoint('.thisIsEndPoint', 1, 1);
 
             })
 
@@ -115,19 +114,8 @@
             + '<button class="thisIsStartPoint" data-lat="'+ feature.geometry.coordinates[1] +'" data-lng="'+ feature.geometry.coordinates[0]+'">Use this as start point</button>' + "<br>"
             + '<button class="thisIsEndPoint" data-lat="'+ feature.geometry.coordinates[1] +'" data-lng="'+ feature.geometry.coordinates[0]+'">Use this as end point</button>' + "<br>"
             ).on("popupopen", function() {
-                $(".thisIsStartPoint").click(function() {
-                    var a = parseFloat($(this).attr('data-lat'));
-                    var b = parseFloat($(this).attr('data-lng'));
-                    var c = [a, b];
-                    control.spliceWaypoints(0, 1, c);
-                })
-                $(".thisIsEndPoint").click(function () {
-                    var a = parseFloat($(this).attr('data-lat'));
-                    var b = parseFloat($(this).attr('data-lng'));
-                    var c = [a, b];
-                    control.spliceWaypoints(1, 1, c);
-                })
-
+                choosePoint('.thisIsStartPoint', 0, 1);
+                choosePoint('.thisIsEndPoint', 1, 1);
             })
         }
     }
@@ -146,19 +134,8 @@
 
             + "<a>Xem thêm</a>" + "<br>"
             ).on("popupopen", function() {
-                $(".thisIsStartPoint").click(function() {
-                    var a = parseFloat($(this).attr('data-lat'));
-                    var b = parseFloat($(this).attr('data-lng'));
-                    var c = [a, b];
-                    control.spliceWaypoints(0, 1, c);
-                })
-                $(".thisIsEndPoint").click(function () {
-                    var a = parseFloat($(this).attr('data-lat'));
-                    var b = parseFloat($(this).attr('data-lng'));
-                    var c = [a, b];
-                    control.spliceWaypoints(1, 1, c);
-                })
-
+                choosePoint('.thisIsStartPoint', 0, 1);
+                choosePoint('.thisIsEndPoint', 1, 1);
             })
 
         }
@@ -200,7 +177,7 @@
         })
         return overlay
     }
-    //layer tree, building
+    //layer places, areas, services
     var place = getAPI("/api/v1/places")
     var area = getAPI("/api/v1/areas")
     var service = getAPI("/api/v1/services")
@@ -220,20 +197,19 @@
     }
 
     L.control.layers(baseLayers, overlays).addTo(map)
-//search
-var selector = L.control({
-        position: 'topright'
-    });
 
-    selector.onAdd = function(map) {
-        var div = L.DomUtil.create('div', 'mySelector');
-        div.innerHTML = '<input id = "opt" type="text" list="marker_select" /><datalist id="marker_select"><option value="init"></option></datalist>';
-        // <select id="marker_select"><option value="init">(select item)</option></select>';
-        return div;
-    };
+    //search
+    var selector = L.control({
+            position: 'topright'
+        });
 
+        selector.onAdd = function(map) {
+            var div = L.DomUtil.create('div', 'mySelector');
+            div.innerHTML = '<input id = "opt" type="text" list="marker_select" /><datalist id="marker_select"><option value="init"></option></datalist>';
+            return div;
+        };
     selector.addTo(map);
-// console.log(markersLayer)
+
     var markers = markersLayer.getLayers();
     // console.log(markers)
     function markerLayer(i){
@@ -252,9 +228,7 @@ var selector = L.control({
         L.DomEvent.addListener(marker_select, 'change', changeHandler);
 
         function changeHandler(e) {
-            // console.log(e.target)
             var valOption = $('option[value="'+e.target.value+'"]').data('value');
-            // console.log(valOption)
             if (e.target.value == "init") {
                 map.closePopup();
             } else {
@@ -266,9 +240,7 @@ var selector = L.control({
         markerLayer(i);
     }
 
-
     //Control routing
-
     var control = L.Routing.control({
         router: L.Routing.osrmv1({
             // serviceUrl: L.osrmv1().getServiceUrl(),
@@ -279,8 +251,6 @@ var selector = L.control({
         routeWhileDragging: true,
         reverseWaypoints: true
         })
-
-    // map.addControl(control)
 
     L.easyButton('fa-level-up',
         function () {  
@@ -293,9 +263,6 @@ var selector = L.control({
                 map.addControl(control)
             }
         }).addTo(map);
-
-
-    // L.Routing.errorControl(control).addTo(map);
 
     //map legend
     var legend = L.control({ position: 'bottomright' })
@@ -335,38 +302,11 @@ var selector = L.control({
             return _round(latlng.lat, 6)+", "+_round(latlng.lng, 6);
         };
 
-        // Generate popup content based on layer type
-        // - Returns HTML string, or null if unknown object
         var getPopupContent = function(layer) {
             // Marker - add lat/long
-            if (layer instanceof L.Marker || layer instanceof L.CircleMarker) {
-                return strLatLng(layer.getLatLng());
-            // Circle - lat/long, radius
-            } else if (layer instanceof L.Circle) {
-                var center = layer.getLatLng(),
-                    radius = layer.getRadius();
-                return "Center: "+strLatLng(center)+"<br />"
-                      +"Radius: "+_round(radius, 2)+" m";
-            // Rectangle/Polygon - area
-            } else if (layer instanceof L.Polygon) {
-                var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs(),
-                    area = L.GeometryUtil.geodesicArea(latlngs);
-                return "Area: "+L.GeometryUtil.readableArea(area, true);
-            // Polyline - distance
-            } else if (layer instanceof L.Polyline) {
-                var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs(),
-                    distance = 0;
-                if (latlngs.length < 2) {
-                    return "Distance: N/A";
-                } else {
-                    for (var i = 0; i < latlngs.length-1; i++) {
-                        distance += latlngs[i].distanceTo(latlngs[i+1]);
-                    }
-                    return "Distance: "+_round(distance, 2)+" m";
-                }
-            }
-            return null;
+            return strLatLng(layer.getLatLng());
         };
+
     map.on(L.Draw.Event.CREATED, function(event) {
             var layer = event.layer;
             var content = getPopupContent(layer)+'<br><input type="checkbox" id="checkService" name="check" value="Service">'
@@ -379,16 +319,11 @@ var selector = L.control({
             if (content !== null) {
                 layer.bindPopup(content).on("popupopen", function() {
                     $("input:checkbox").on('click', function() {
-                    // in the handler, 'this' refers to the box clicked on
                     var $box = $(this);
                     console.log($box.val())
                     if ($box.is(":checked")) {
-                        // the name of the box is retrieved using the .attr() method
-                        // as it is assumed and expected to be immutable
                         var group = "input:checkbox[name='" + $box.attr("name") + "']";
                         console.log(group)
-                        // the checked state of the group/box on the other hand will change
-                        // and the current value is retrieved using .prop() method
                         $(group).prop("checked", false);
                         $box.prop("checked", true);
                     } else {
@@ -397,50 +332,33 @@ var selector = L.control({
 
                     $("#save").click(function(){
                         var check = $("input:checkbox:checked").val()
-                        console.log(check)
                         function toDb(type){
                             console.log(type)
                             var lattt = layer.getLatLng()
                             console.log(lattt)
-                            var jsonn = {
+                            var geoJSON = {
                                 "typeMarker": type,
                                 "geometry": {
                                     "type": "Point",
                                     "coordinates": [lattt['lng'], lattt['lat']]
                                 },
                             }
-                            console.log(jsonn)
-                            return jsonn
+                            $.ajax({
+                                    url: "/createNewItem",
+                                    type: "POST",
+                                    contentType: "application/json",
+                                    data: JSON.stringify(geoJSON),
+                                    success: function (data) { }
+                            });
                         }
                         if (check == "Service"){
                             var geoJSON = toDb("Service")
-                                $.ajax({
-                                    url: "/createNewItem",
-                                    type: "POST",
-                                    contentType: "application/json",
-                                    data: JSON.stringify(geoJSON),
-                                    success: function (data) { }
-                                });
                         }
                         else if (check == "Area"){
                             var geoJSON = toDb("Area")
-                                $.ajax({
-                                    url: "/createNewItem",
-                                    type: "POST",
-                                    contentType: "application/json",
-                                    data: JSON.stringify(geoJSON),
-                                    success: function (data) { }
-                                });
                         }
                         else if (check == "Place"){
                             var geoJSON = toDb("Place")
-                                $.ajax({
-                                    url: "/createNewItem",
-                                    type: "POST",
-                                    contentType: "application/json",
-                                    data: JSON.stringify(geoJSON),
-                                    success: function (data) { }
-                                });
                         }
                     })
             });
