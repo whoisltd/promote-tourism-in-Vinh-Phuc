@@ -71,6 +71,7 @@ Start the server
 ```bash
   flask run
 ```
+
 ## Authors
 
 - [@Dat Le](https://www.github.com/WhoIsLTD)
