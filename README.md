@@ -45,6 +45,7 @@ View demo in [here](https://promote-tourism.herokuapp.com/)
 To run this project, you will need to add the following environment variables to your .env file
 
 `SECRET_KEY`
+
 `SQLALCHEMY_DATABASE_URI`
 
 ## Run Locally
