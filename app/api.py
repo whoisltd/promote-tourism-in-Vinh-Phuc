@@ -51,6 +51,7 @@ def areas_api():
             geometry_temp = ""
         feature = {
             "type": "Feature",
+            "typeFeature": "Area",
             "properties": properties_temp,
             "geometry": geometry_temp
         }
@@ -96,7 +97,7 @@ def places_api():
     for place in places:
         properties_temp = {
             "id": place.id,
-            "title": place.title,
+            "name": place.title,
             "description": place.description,
             "image": place.image,
             "id_tourist_area": place.id_tourist_area,
@@ -108,6 +109,7 @@ def places_api():
             geometry_temp = ""
         feature = {
             "type": "Feature",
+            "typeFeature": "Place",
             "properties": properties_temp,
             "geometry": geometry_temp
         }
@@ -170,6 +172,7 @@ def services_api():
             geometry_temp = ""
         feature = {
             "type": "Feature",
+            "typeFeature": "Service",
             "properties": properties_temp,
             "geometry": geometry_temp
         }

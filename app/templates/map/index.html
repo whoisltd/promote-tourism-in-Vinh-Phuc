@@ -4,358 +4,38 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
 
-<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=drYehOYZw3SzYib8zcg9Ieho4XAZgA70"></script>
-<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=drYehOYZw3SzYib8zcg9Ieho4XAZgA70"></script>
 
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
-<script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script> 
+<link rel="stylesheet" href="/static/plugins/easy-button/easy-button.css">
+<script src="/static/plugins/easy-button/easy-button.js"></script> 
 
 <link rel="stylesheet" href="/static/plugins/leaflet-locatecontrol-0.76.0/dist/L.Control.Locate.min.css" />
 <script src="/static/plugins/leaflet-locatecontrol-0.76.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-<script src="https://unpkg.com/leaflet-routing-machine@3.2.5"></script>
-<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.5/dist/leaflet-routing-machine.css">
-<script src="https://unpkg.com/leaflet-control-geocoder@1.5.4"></script>
 
-<script src="/static/plugins/lrm-esri-master/dist/lrm-esri.js"></script>
+<script src="/static/plugins/leaflet-routing-machine-3.2.12/dist/leaflet-routing-machine.js"></script>
+<link rel="stylesheet" href="/static/plugins/leaflet-routing-machine-3.2.12/dist/leaflet-routing-machine.css">
+
+<script src="/static/plugins/control-geocoder/Control.Geocoder.js"></script>
+
+<script src="/static/plugins/leaflet-search-3.0.2/dist/leaflet-search.min.js"></script>
+<link rel="stylesheet" href="/static/plugins/leaflet-search-3.0.2/dist/leaflet-search.min.css">
+
 <script src="/static/js/jquery-3.6.0.min.js"></script>
-<button class="thisIsStartPoint">oke</button>
+
 <div id="mapid"></div>
 
-<button id="btn" class="oke">AddToDB</button>
 <link rel="stylesheet" href="/static/css/map.css">
-<style>
-    .results {
-        background-color: white;
-        opacity: 0.8;
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        width: 320px;
-        height: 480px;
-        overflow-y: scroll;
-    }
-    </style>
+
 <script>
+
     var map = L.map('mapid').setView([21.372538517232353, 105.5548151996359], 11.75);
     var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-//     var lc = L.control.locate().on("locationfound", e => {
-
-// leaflet.marker([e.latitude, e.longitude]).bindPopup("YOU ARE HERE!").addTo(map);
-//     }).addTo(map);
-
-//     console.log(lc._map._lastCenter);
-//     lc.start();
-
-
-mylocation = L.control.locate({
-    position: 'topleft',
-    strings: {
-        title: "My location",
-        popup: 'You are here<br><button id="useToStart">use this as start point</button><br><button id="useToEnd">use as end point</button>',
-    },
-}).addTo(map);
-
-var myloca
-map.on('locationfound', function (self) {
-myloca = [self.latlng.lat, self.latlng.lng]
-});
-
-map.on('popupopen', function (self) {
-    $('#useToStart').click(function () {
-        control.spliceWaypoints(0, 1, myloca);
-    });
-
-    $('#useToEnd').click(function () {
-        control.spliceWaypoints(1, 1, myloca);
-    });
-});
-
-// $(document).ready(function(){
-//     $("#useToStart").click(function(){
-//         console.log("oke");
-//         console.log(mylocation._map._lastCenter);
-//         $("#startPoint").val(mylocation._map._lastCenter);
-//     });
-//     $("#useToEnd").click(function(){
-//         console.log(mylocation._map._lastCenter);
-//         $("#endPoint").val(mylocation._map._lastCenter);
-//     });
-// });
-
-// $('.leaflet-control-locate').click(function(e) { e => {
-//     L.marker([e.latitude, e.longitude]).bindPopup("YOU ARE HERE!").addTo(map);}})
-// map.on('locationfound', function(e) { e => {
-//     L.marker([e.latitude, e.longitude]).bindPopup("YOU ARE HERE!").addTo(map);
-//     }
-// });
-// L.easyButton('fa-map-marker',
-//     function () {
-//         lct = map.locate({
-//             setView: true}).on("locationfound", function(e) {
-//                 map.addLayer();
-//         });
-//         }).addTo(map);
-    function iconPlace(feature, latlng) {
-        var iconCus = L.icon({
-            iconUrl: "../../static/images/icons/place-icon.png",
-            iconSize: [20, 20],
-            iconAncho: [22, 94],
-            popupAncho: [-3, -76]
-        })
-        return L.marker(latlng, { icon: iconCus })
-    }
-    function iconArea(feature, latlng) {
-        var iconCus = L.icon({
-            iconUrl: "../../static/images/icons/area-icon.png",
-            iconSize: [20, 20],
-            iconAncho: [22, 94],
-            popupAncho: [-3, -76]
-        })
-        return L.marker(latlng, { icon: iconCus })
-    }
-    function iconService(feature, latlng) {
-        var iconCus = L.icon({
-            iconUrl: "../../static/images/icons/services-icon.png",
-            iconSize: [20, 20],
-            iconAncho: [22, 94],
-            popupAncho: [-3, -76]
-        })
-        return L.marker(latlng, { icon: iconCus })
-    }
-    //Feature building, tree
-    function placeFeature(feature, layer) {
-        feature.layer = layer;
-        if (feature.properties) {
-
-            layer.bindPopup("<b>Tên địa danh: </b>" + feature.properties.title + "<br>"
-            )
-
-        }
-    }
-
-    function areaFeature(feature, layer) {
-        feature.layer = layer;
-        if (feature.properties) {
-
-            layer.bindPopup("<b>Khu du lịch: </b>" + feature.properties.name + "<br>")
-        }
-    }
-
-    function serviceFeature(feature, layer) {
-        feature.layer = layer;
-        if (feature.properties) {
-            layer.bindPopup("<b>Loại dịch vụ: </b>" + feature.properties.type + "<br>"
-            + "<b>Tên: </b>" + feature.properties.name + "<br>"
-            + "<b>Địa chỉ: </b>" + feature.properties.address + "<br>"
-			+ "<b>Số điện thoại: </b>" + feature.properties.phone + "<br>"
-			+ "<b>Email: </b>" + feature.properties.email + "<br>"
-            + "<b>Coordinates: </b>" + feature.geometry.coordinates + "<br>"
-            + '<button class="thisIsStartPoint" data-lat="'+ feature.geometry.coordinates[1] +'" data-lng="'+ feature.geometry.coordinates[0]+'">Use this as start point</button>' + "<br>"
-            + '<button class="thisIsEndPoint" data-lat="'+ feature.geometry.coordinates[1] +'" data-lng="'+ feature.geometry.coordinates[0]+'">Use this as end point</button>' + "<br>"
-
-            + "<a>Xem thêm</a>" + "<br>"
-            ).on("popupopen", function() {
-                $(".thisIsStartPoint").click(function() {
-                    var a = parseFloat($(this).attr('data-lat'));
-                    var b = parseFloat($(this).attr('data-lng'));
-                    var c = [a,b];
-                    control.spliceWaypoints(0, 1, c);
-                })
-                $(".thisIsEndPoint").click(function() {
-                    var a = parseFloat($(this).attr('data-lat'));
-                    var b = parseFloat($(this).attr('data-lng'));
-                    var c = [a,b];
-                    control.spliceWaypoints(1, 1, c);
-                })
-
-            })
-
-        }
-    }
-
-
-    //Layer Group
-    var markersLayer = new L.LayerGroup();
-
-    //Search
-    // var searchTree = L.control.fuseSearch({
-    //     position: 'topleft'
-    // })
-    // searchTree.addTo(map);
-
-    // var searchBuilding = L.control.fuseSearch()
-    // searchBuilding.addTo(map);
-
-    // $("#btn").click(function (e) {
-
-    // })
-
-
-    // 
-    // Get API tree, building
-    function getAPI(link) {
-        var overlay = null;
-        $.ajax({
-            type: "GET",
-            datatype: "JSON",
-            url: link,
-            async: !1,
-            success: function (response) {
-                console.log(response)
-                if (link == "/api/v1/places") {
-
-                    // searchTree.indexFeatures(response.features, ['loaicay', 'chieucao', 'id']);
-
-                    overlay = L.geoJSON(response, {
-                        pointToLayer: iconPlace, onEachFeature: placeFeature
-                    })
-                    markersLayer.addLayer(overlay)
-                    // .addTo(map)
-                }
-                else if (link == "/api/v1/areas") {
-
-                    // searchBuilding.indexFeatures(response.features, ['loaiNha', 'soTang', 'diaChi']);
-
-                    overlay = L.geoJSON(response, {
-                        pointToLayer: iconArea, onEachFeature: areaFeature
-                    })
-                    markersLayer.addLayer(overlay)
-                    // .addTo(map)
-                }
-                else if (link == "/api/v1/services") {
-
-                    // searchBuilding.indexFeatures(response.features, ['loaiNha', 'soTang', 'diaChi']);
-
-                    overlay = L.geoJSON(response, {
-                        pointToLayer: iconService, onEachFeature: serviceFeature
-                    })
-                    markersLayer.addLayer(overlay)
-                    // .addTo(map)
-                }
-            }
-        })
-        return overlay
-    }
-    //layer tree, building
-    var place = getAPI("/api/v1/places")
-    var area = getAPI("/api/v1/areas")
-    var service = getAPI("/api/v1/services")
-
-    console.log(place)
-    //add layer to map
-    map.addLayer(markersLayer)
-   
-    // Control layers
-    var baseLayers = {
-        "Open Street Maps": osm
-    }
-    var overlays = {
-        "Place": place,
-        "Area": area,
-        "Service": service
-    }
-
-    L.control.layers(baseLayers, overlays).addTo(map)
-
-    
-    //Control routing
-    var rlayer = null;
-    var check = true;
-
-    var control = L.Routing.control({
-        
-        waypoints: [
-        L.latLng(21.263719570619767, 105.51480666076853),
-        L.latLng(21.239721388436138, 105.56939497632388)
-        ],
-        router: L.Routing.osrmv1({
-            // serviceUrl: L.osrmv1().getServiceUrl(),
-        }),
-        // router: L.Routing.esri({
-        // liveTraffic: true,
-        // profile: 'Driving',
-        // //serviceUrl: 'https://utility.arcgis.com/usrsvcs/appservices/LGPJQ9In2I7WQA6q/rest/services/World/Route/NAServer/Route_World'
-        // // https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World/solve?<parameters>
-        // // serviceUrl: 'https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World'
-        // }),
-        geocoder: L.Control.Geocoder.nominatim(),
-        routeWhileDragging: true,
-        reverseWaypoints: true
-        })
-    
-    // rlayer = L.layerGroup(control);
-    // console.log(markersLayer)
-    // console.log(rlayer)
-    map.addControl(control)
-    
-    // map.removeLayer(control)
-    // console.log(rlayer)
-    L.easyButton('fa-level-up',
-    function () {
-        console.log(check + "okeee")
-        if (control._map) {
-            // check = false
-            map.removeControl(control)
-        }
-        else{
-            // check = true
-            map.addControl(control)
-        }
-    }).addTo(map);
-
-    
-    // L.Routing.errorControl(control).addTo(map);
-
-    //map legend
-    var legend = L.control({ position: 'bottomright' })
-    legend.onAdd = function (map) {
-        var div = L.DomUtil.create('div', 'info')
-        div.innerHTML += '<img style="width:30px;height:30px" src="../../static/images/icons/place-icon.png">: Place<br>'
-        div.innerHTML += '<img style="width:30px;height:30px" src="../../static/images/icons/services-icon.png">: Service<br>'
-        div.innerHTML += '<img style="width:30px;height:30px" src="../../static/images/icons/area-icon.png">: Area<br>'
-        return div
-    }
-    legend.addTo(map)
-
-    //draw Item
-    drawnItems = L.featureGroup().addTo(map);
-    map.addControl(new L.Control.Draw({
-        edit: {
-            featureGroup: drawnItems,
-            poly: {
-                allowIntersection: false
-            }
-        },
-        draw: {
-            polygon: {
-                allowIntersection: false,
-                showArea: true
-            }
-        }
-    }));
-
-    map.on('draw:created', function (event) {
-        var layer = event.layer;
-        // layer.on('click', layerClick);
-        drawnItems.addLayer(layer);
-        var geoJSON = drawnItems.toGeoJSON();
-
-        // $.ajax({
-        //     url: "/createNewItem",
-        //     type: "POST",
-        //     contentType: "application/json",
-        //     data: JSON.stringify(geoJSON),
-        //     success: function (data) { }
-        // });
-    });
-
+    }).addTo(map); 
 </script>
-<script>
-    
-</script>
+<script src="../../static/js/map/currentLocation.js"></script>
+<script src="../../static/js/map/thematicMap.js"></script>
+<script src="../../static/js/map/searchLayer.js"></script>
+<script src="../../static/js/map/routingControl.js"></script>
+<script src="../../static/js/map/createNewPoint.js"></script>

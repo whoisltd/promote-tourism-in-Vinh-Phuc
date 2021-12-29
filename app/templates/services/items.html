@@ -1,0 +1,30 @@
+<div class="row {% if services|length == 0 %}
+justify-content-center
+{% endif %}">
+    {% if services|length %}
+        {% for service in services %}
+            <div class="col-md-4">
+                <figure class="card card-product-grid">
+                    <div class="img-wrap">
+                        <!-- <span class="badge badge-danger"> NEW </span> -->
+                        <img src="{{ url_for('static', filename=service.image) }}">
+                        <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
+                    </div> <!-- img-wrap.// -->
+                    <figcaption class="info-wrap">
+                        <div class="fix-height">
+                            <a href="#" class="title">{{ service.name }}</a>
+                            <div class="price-wrap mt-2">
+                                <span class="text-truncate">{{ service.description }}</span>
+                                <!-- <del class="price-old">$1980</del> -->
+                            </div> <!-- price-wrap.// -->
+                        </div>
+                        <a href="{{ url_for('services_detail', id=service.id) }}" class="btn btn-block btn-primary">Xem chi tiết</a>
+                    </figcaption>
+                </figure>
+            </div> <!-- col.// -->
+        {% endfor %}
+    {% else %}
+        <h3 class="text-center">No services found</h3>
+    {% endif %}
+</div>
+{{ pagination.links }}
